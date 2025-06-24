@@ -83,7 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 flags++
                 square.innerHTML = '🚩'
                 flagsLeft.innerHTML = bombAmount - flags
-                
+                checkWin()
+            } else {
+                square.classList.remove('flag')
+                flags--
+                square.innerHTML = ''
+                flagsLeft.innerHTML = bombAmount - flags
             }
         }
     }
