@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function createBoard() {
         flagsLeft.innerHTML = bombAmount
 
+        //get shuffled game array with random bombs
+        const bombArray = Array(bombAmount).fill('bomb')
+
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div')
             square.id = i
