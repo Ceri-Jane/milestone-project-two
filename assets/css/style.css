@@ -13,7 +13,7 @@
     width: 600px;
 }
 
-.game-grid {
+.grid {
     height: 500px;
     width: 500px;
     display: flex;
