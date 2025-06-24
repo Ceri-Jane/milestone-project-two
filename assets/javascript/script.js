@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //set amount of bombs to be used in the game - use let instead of const as this can then be changed in the future
     let bombAmount = 20
     let squares = []
+    let isGameOver = false
 
     //Create game board
     function createBoard() {
@@ -18,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         //shuffle the 20 bombs strings together with the 80 valid strings
         const gameArray = emptyArray.concat(bombArray)
         const shuffledArray = gameArray.sort(() => Math.random() - 0.5)
-        console.log(shuffledArray)
 
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div')
@@ -75,6 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //define function for click
     function click(square) {
         console.log(square)
+        //continue the game if a bomb isn't clicked
+        if (isGameOver || square.classList.contains('checked') || square.classList.contains('flag') ) return
+
+        //end the game if a bomb is clicked
+        if (square.classList.contains('bomb')) {
+            isGameOver(square)
+        }
     }
 
 })
