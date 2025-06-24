@@ -40,6 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         }
 
+        //add numbers for the amount of bombs around the square thats clicked
+        for ( let i = 0; i < squares.length; i++) {
+            let total = 0
+            //if clicking on a box on the left edge, do not count bombs in boxes to the left as there are no boxes here
+            const isLeftEdge = (i % width === 0)
+            //if clicking on a box on the right edge, do not count bombs in boxes to the right as there are no boxes here
+            const isRightEdge = (i % width === width - 1)
+        }
+
     }
 
     createBoard()
