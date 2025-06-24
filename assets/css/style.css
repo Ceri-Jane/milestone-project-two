@@ -9,10 +9,10 @@
   --left-highlight-color: #ffffff; /*white*/
   --top-highlight-color: #d6d6d6; /*lighter-grey*/
   --background-color: #a5a5a5; /*light grey*/
-  --one-color: #1fb91a;
-  --two-color: #1d1ab9;
-  --three-color: #cf0ea5;
-  --four-color: #e76920;
+  --one-color: #0e6b0a;
+  --two-color: #131191;
+  --three-color: #880f6e;
+  --four-color: #97400e;
 }
 
 /* Global styles */
@@ -56,17 +56,17 @@ div {
 }
 
 .one {
-    color: ;
+    color: var(--one-color);
 }
 
 .two {
-    color: ;
+    color: var(--two-color);
 }
 
 .three {
-    color: ;
+    color: var(--three-color);
 }
 
 .four {
-    color: ;
+    color: var(--four-color);
 }
