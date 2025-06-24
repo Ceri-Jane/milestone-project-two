@@ -1,0 +1,23 @@
+/* CSS Variables */
+:root {
+  --primary-font: ;
+  --secondary-font: ;
+  --border-color: #5f6a6a; /*dark grey*/
+  --background-color: #a5a5a5; /*light grey*/
+}
+
+/* Global styles */
+.container {
+    width: 600px;
+}
+
+.game-grid {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    background-color: var(--background-color);
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 10px solid var(--border-color);
+}
