@@ -9,6 +9,10 @@
   --left-highlight-color: #ffffff; /*white*/
   --top-highlight-color: #d6d6d6; /*lighter-grey*/
   --background-color: #a5a5a5; /*light grey*/
+  --one-color: #1fb91a;
+  --two-color: #1d1ab9;
+  --three-color: #cf0ea5;
+  --four-color: #e76920;
 }
 
 /* Global styles */
@@ -49,4 +53,20 @@ div {
     height: 50px;
     border: 2px solid var(--shadow-color);
     box-sizing: border-box;
+}
+
+.one {
+    color: ;
+}
+
+.two {
+    color: ;
+}
+
+.three {
+    color: ;
+}
+
+.four {
+    color: ;
 }
