@@ -81,12 +81,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //end the game if a bomb is clicked
         if (square.classList.contains('bomb')) {
-            gameOver(square)
+            gameOver()
         }
     }
 
-    function gameOver(square) {
-        XPathResult.innerHTML = 'BOOOOOM! Game Over!'
+    function gameOver() {
+        result.innerHTML = 'BOOOOOM! Game Over!'
+        isGameOver = true
+
+        //reveal all bombs when the game is over
+        squares.forEach(function(square) {
+            if (square.classList.contains('bomb')) {
+                square.innerHTML = '💣'
+                square.classList.remove('bomb')
+                square.classList.add('checked')
+            }
+        })
     }
 
 })
