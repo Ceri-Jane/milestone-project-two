@@ -57,11 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 //check square to the top and left of the one selected
                 if (i > 11 && !isLeftEdge && squares[i - width - 1].classList.contains('bomb')) total++
                 //check square directly to the right of the one selected
-                if (i < 99 && !isRightEdge && [i + 1].classList.contains('bomb')) total++
+                if (i < 99 && !isRightEdge && squares[i + 1].classList.contains('bomb')) total++
                 //check square directly below and to the left of the one selected
                 if (i < 90 && !isLeftEdge && squares[i -1 + width].classList.contains('bomb')) total++
                 //check square directly below and to the right of the one selected
-                if (i < 88 && !isRightEdge && [i + 1 + width].classList.contains('bomb')) total++
+                if (i < 88 && !isRightEdge && squares[i + 1 + width].classList.contains('bomb')) total++
                 //check square directly below the one selected
                 if (i < 89 && squares[i + width].classList.contains('bomb')) total++
                 squares[i].setAttribute('data', total)
