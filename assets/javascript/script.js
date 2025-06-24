@@ -47,6 +47,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const isLeftEdge = (i % width === 0)
             //if clicking on a box on the right edge, do not count bombs in boxes to the right as there are no boxes here
             const isRightEdge = (i % width === width - 1)
+
+            if ( squares[i].classList.contains('valid') ) {
+                if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains('bomb')) total++
+                //check square to the top and right of the one selected & makes sure not to check any non-existant boxes above the top row
+                if (i > 9 && !isRightEdge && squares[i + 1 - width].classList.contains('bomb')) total ++
+                //check square directly above the one selected
+                if (i > 10 && squares[i - width].classList.contains('bomb')) total++
+                //check square to the top and left of the one selected
+                if (i > 11 && !isLeftEdge && squares[i - width - 1].classList.contains('bomb')) total++
+                //check square directly to the right of the one selected
+                if (i < 99 && !isRightEdge && [i + 1].classList.contains('bomb')) total++
+                //check square directly below and to the left of the one selected
+                if (i < 90 && !isLeftEdge && squares[i -1 + width].classList.contains('bomb')) total++
+                //check square directly below and to the right of the one selected
+                if (i < 88 && !isRightEdge && [i + 1 + width].classList.contains('bomb')) total++
+                //check square directly below the one selected
+                if (i < 89 && squares[i + width].classList.contains('bomb')) total++
+                squares[i].setAttribute('data', total)
+            }
         }
 
     }
