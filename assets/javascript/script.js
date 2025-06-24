@@ -13,4 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    createBoard()
+
 })
