@@ -1,10 +1,9 @@
 /* Google fonts import */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* CSS Variables */
 :root {
-  --primary-font: ;
-  --secondary-font: ;
+  --primary-font: "Press Start 2P", sans-serif;
   --border-color: #5f6a6a; /*dark grey*/
   --background-color: #a5a5a5; /*light grey*/
 }
@@ -23,4 +22,10 @@
     margin-top: 20px;
     margin-bottom: 10px;
     border: 10px solid var(--border-color);
+}
+
+div {
+    font-size: 25px;
+    text-align: center;
+    font-family: var(--primary-font);
 }
