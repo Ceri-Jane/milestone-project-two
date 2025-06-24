@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let bombAmount = 20
     let squares = []
     let isGameOver = false
+    let flags = 0
 
     //Create game board
     function createBoard() {
@@ -72,6 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     createBoard()
+
+    //add red flag with right click
+    function addFlag(square) {
+        if (isGameOver) return
+        if (!square.classList.contains('checked') && (flags < bombAmount)) {
+            if (!square.classList.contains('flag')) {
+                square.classList.add('flag')
+                flags++
+                square.innerHTML = '🚩'
+                flagsLeft.innerHTML = bombAmount - flags
+                
+            }
+        }
+    }
 
     //define function for click
     function click(square) {
