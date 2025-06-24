@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div')
             square.id = i
+            //add class name to each square to match what string is in it at the time
+            square.classList.add(shuffledArray[i])
             grid.appendChild(square)
         }
 
