@@ -1,10 +1,11 @@
 // Using this custom script in head element so adding this DOM content listener to run once everything in body element has loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const grid = document.querySelector('.grid')
     const flagsLeft = document.querySelector('#flags-left')
     const width = 10
     //set amount of bombs to be used in the game - use let instead of const as this can then be changed in the future
     let bombAmount = 20
+    let squares = []
 
     //Create game board
     function createBoard() {
@@ -25,6 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
             //add class name to each square to match what string is in it at the time
             square.classList.add(shuffledArray[i])
             grid.appendChild(square)
+            squares.push(square)
+
+            //normal left click
+            square.addEventListener('click', function() {
+
+            })
+
+            //ctrl & left click for adding flags
+            square.addEventListener('click', function() {
+                
+            })
         }
 
     }
