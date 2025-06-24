@@ -91,7 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (total === 2) square.classList.add('two')
                 if (total === 3) square.classList.add('three')
                 if (total === 4) square.classList.add('four')
+                square.innerHTML = total
+                return
             } 
+            //fans out if there are zero bombs around the area of the selected square
+            checkSquare(square)
         }
     }
 
