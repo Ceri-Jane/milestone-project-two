@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const grid = document.querySelector('.grid')
     const flagsLeft = document.querySelector('#flags-left')
+    const result = document.querySelector('#result')
     const width = 10
     //set amount of bombs to be used in the game - use let instead of const as this can then be changed in the future
     let bombAmount = 20
@@ -80,8 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //end the game if a bomb is clicked
         if (square.classList.contains('bomb')) {
-            isGameOver(square)
+            gameOver(square)
         }
+    }
+
+    function gameOver(square) {
+        XPathResult.innerHTML = 'BOOOOOM! Game Over!'
     }
 
 })
