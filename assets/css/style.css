@@ -4,7 +4,10 @@
 /* CSS Variables */
 :root {
   --primary-font: "Press Start 2P", monospace;
-  --border-color: #5f6a6a; /*dark grey*/
+  --border-color: #000000; /*black*/
+  --shadow-color: #4b4949;
+  --left-highlight-color: #ffffff; /*white*/
+  --top-highlight-color: #d6d6d6; /*lighter-grey*/
   --background-color: #a5a5a5; /*light grey*/
 }
 
@@ -25,13 +28,21 @@
     border: 10px solid var(--border-color);
 }
 
-.grid div {
+div {
     font-size: 25px;
     text-align: center;
     font-family: var(--primary-font);
-    border: solid 1px red;
-    box-sizing: border-box;
+}
+
+.valid,
+.bomb {
     /*set to 10% of grid height & width so that exactly 10x10 squares can fit in the grid*/
     width: 50px;
     height: 50px;
+}
+
+.valid {
+    border: 5px solid;
+    border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color) var(--left-highlight-color);
+    box-sizing: border-box;
 }
