@@ -16,6 +16,15 @@
 }
 
 /* Global styles */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers horizontally */
+    justify-content: flex-start; /* top alignment */
+    min-height: 100vh; /* optional: helps with vertical space */
+}
+
 .container {
     width: 600px;
 }
@@ -30,11 +39,6 @@
     margin-top: 20px;
     margin-bottom: 10px;
     border: 10px solid var(--border-color);
-}
-
-main {
-    display: flex;
-    justify-content: center;
 }
 
 div {
