@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             })
 
-            //ctrl & left click for adding flags
+            //right click for adding flags
             square.addEventListener('contextmenu', function() {
                 addFlag(square)
             })
