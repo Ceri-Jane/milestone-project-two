@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 flags++
                 square.innerHTML = '🚩'
                 flagsLeft.innerHTML = bombAmount - flags
-                checkWin()
+                checkForWin()
             } else {
                 square.classList.remove('flag')
                 flags--
@@ -169,6 +169,20 @@ document.addEventListener('DOMContentLoaded', function() {
        
             //fans out after 10 miliseconds    
         }, 10)
+    }
+
+    function checkForWin() {
+        let matches = 0
+
+        for (let i = 0; i < squares.length; i++) {
+            if (squares[i].classList.contains('flag') && squares[i].classList.contains('bomb')) {
+                matches++
+            }
+            if (matches === bombAmount) {
+                result.innerHTML = 'YAY! YOU WIN!'
+                isGameOver = true
+            }
+        }
     }
 
     function gameOver() {
