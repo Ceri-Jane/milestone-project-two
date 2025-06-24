@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const bombArray = Array(bombAmount).fill('bomb')
         //fill all other 80 squares with a string named valid
         const emptyArray = Array(width * width - bombAmount).fill('valid')
+        //shuffle the 20 bombs strings together with the 80 valid strings
+        const gameArray = emptyArray.concat(bombArray)
+        const shuffledArray = gameArray.sort(() => Math.random() - 0.5)
+        console.log(shuffledArray)
 
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div')
