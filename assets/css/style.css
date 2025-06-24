@@ -36,13 +36,10 @@ div {
 
 .valid,
 .bomb {
-    /*set to 10% of grid height & width so that exactly 10x10 squares can fit in the grid*/
-    width: 50px;
-    height: 50px;
-}
-
-.valid {
     border: 5px solid;
     border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color) var(--left-highlight-color);
     box-sizing: border-box;
+    /*set to 10% of grid height & width so that exactly 10x10 squares can fit in the grid*/
+    width: 50px;
+    height: 50px;
 }
