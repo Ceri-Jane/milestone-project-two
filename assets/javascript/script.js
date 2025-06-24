@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //Create game board
     function createBoard() {
 
+        for (let i = 0; i < width * width; i++) {
+            const square = document.createElement('div')
+        }
+
     }
 
 })

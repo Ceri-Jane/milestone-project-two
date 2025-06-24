@@ -28,6 +28,7 @@ div {
     font-size: 25px;
     text-align: center;
     font-family: var(--primary-font);
+    /*set to 10% of grid height & width so that exactly 10x10 squares can fit in the grid*/
     width: 50px;
     height: 50px;
 }
