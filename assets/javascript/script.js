@@ -30,17 +30,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
             //normal left click
             square.addEventListener('click', function() {
+                click(square)
 
             })
 
             //ctrl & left click for adding flags
             square.addEventListener('click', function() {
-                
+                addFlag(square)
             })
         }
 
     }
 
     createBoard()
+
+    //define function for click
+    function click(square) {
+        console.log(square)
+    }
 
 })
