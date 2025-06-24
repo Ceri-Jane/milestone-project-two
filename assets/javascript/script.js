@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div')
+            square.id = i
             grid.appendChild(square)
         }
 
