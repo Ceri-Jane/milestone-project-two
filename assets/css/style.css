@@ -3,7 +3,7 @@
 
 /* CSS Variables */
 :root {
-  --primary-font: "Press Start 2P", sans-serif;
+  --primary-font: "Press Start 2P", monospace;
   --border-color: #5f6a6a; /*dark grey*/
   --background-color: #a5a5a5; /*light grey*/
 }
