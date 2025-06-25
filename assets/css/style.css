@@ -134,10 +134,10 @@ footer {
   font-size: 17px;
   color: var(--left-highlight-color);
   background-color: var(--border-color);
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
-  text-align: center; /* Optional: Center the text */
-  padding: 10px 0; /* Optional: Add padding */
+  text-align: center;
+  padding: 10px 0; 
 }
