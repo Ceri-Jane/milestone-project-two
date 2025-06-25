@@ -150,6 +150,7 @@ footer {
 #social-networks {
   text-align: center;
   padding-top: 12px;
+  padding-bottom: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,6 +161,6 @@ footer {
 }
 
 #social-networks i {
-  font-size: 150%;
-  color: var(--secondary-color);
+  font-size: 100px;
+  color: var(--left-highlight-color);
 }
