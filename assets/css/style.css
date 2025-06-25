@@ -146,6 +146,18 @@ div {
     padding-top: 50px;
 }
 
+.scroll-box {
+  background-color: var(--top-highlight-color);
+  text-align: left;
+  font-size: 15px;
+  width: 700px;
+  height: 400px;
+  overflow-y: scroll;
+  border: 5px solid var(--border-color);
+  padding-left: 30px;
+  margin-bottom: 100px;
+}
+
 footer {
   font-family: var(--primary-font);  
   font-size: 17px;
@@ -160,8 +172,8 @@ footer {
 }
 
 .logo-image {
-    max-width: 600px;
-    max-height: 600px;
+  max-width: 600px;
+  max-height: 600px;
 }
 
 #social-networks {
