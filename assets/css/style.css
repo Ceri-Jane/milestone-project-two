@@ -28,6 +28,8 @@
   top: 0;
   width: 100%;
   z-index: 1000;
+  height: 60px;
+  align-items: center;
 }
 
 /* Style the links inside the navigation bar */
@@ -56,6 +58,7 @@
 }
 
 main {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center; /* centers horizontally */
