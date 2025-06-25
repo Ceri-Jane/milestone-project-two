@@ -70,6 +70,10 @@ main {
     width: 600px;
 }
 
+h1 {
+    padding-bottom: 50px;
+}
+
 .grid {
     height: 500px;
     width: 500px;
