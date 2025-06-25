@@ -23,6 +23,10 @@
   overflow: hidden;
   display: flex;
   justify-content: center; /* center horizontally */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 /* Style the links inside the navigation bar */
