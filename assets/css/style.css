@@ -51,6 +51,10 @@
   color: var(--left-highlight-color);
 }
 
+.topnav a:not(:last-child) {
+  margin-right: 40px;
+}
+
 main {
     display: flex;
     flex-direction: column;
