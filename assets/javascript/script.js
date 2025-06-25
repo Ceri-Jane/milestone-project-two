@@ -74,6 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createBoard()
 
+    //reset button
+    const resetButton = document.getElementById('reset-button');
+    resetButton.addEventListener('click', resetGame);
+
     //add red flag with right click
     function addFlag(square) {
         if (isGameOver) return
@@ -167,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 click(newSquare)
             }
        
-            //fans out after 10 miliseconds    
+        //fans out after 10 miliseconds    
         }, 10)
     }
 
@@ -199,4 +203,15 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
 
-})
+    function resetGame() {
+        // Clear the grid and squares array
+        grid.innerHTML = ''
+        squares = []
+        isGameOver = false
+        flags = 0
+        result.innerHTML = ''
+
+        // Recreate the board
+        createBoard()
+    }
+});
