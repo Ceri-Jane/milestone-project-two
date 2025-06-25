@@ -75,6 +75,10 @@ h1 {
     text-transform: uppercase;
 }
 
+h2 {
+    font-size: x-large;
+}
+
 .grid {
     height: 500px;
     width: 500px;
