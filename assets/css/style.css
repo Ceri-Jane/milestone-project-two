@@ -150,7 +150,7 @@ footer {
   font-family: var(--primary-font);  
   font-size: 17px;
   color: var(--left-highlight-color);
-  background-color: var(--border-color);
+  background-color: var(--shadow-color);
   position: relative;
   left: 0;
   bottom: 0;
