@@ -146,3 +146,20 @@ footer {
     max-width: 600px;
     max-height: 600px;
 }
+
+#social-networks {
+  text-align: center;
+  padding-top: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+#social-networks i {
+  font-size: 150%;
+  color: var(--secondary-color);
+}
