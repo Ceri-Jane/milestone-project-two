@@ -141,3 +141,8 @@ footer {
   text-align: center;
   padding: 10px 0; 
 }
+
+.logo-image {
+    max-width: 600px;
+    max-height: 600px;
+}
