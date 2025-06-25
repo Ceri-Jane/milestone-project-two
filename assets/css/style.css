@@ -124,3 +124,7 @@ div {
 .four {
     color: var(--four-color);
 }
+
+#how-to-play {
+    padding-top: 50px;
+}
