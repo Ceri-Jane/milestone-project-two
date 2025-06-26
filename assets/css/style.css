@@ -58,7 +58,7 @@
 }
 
 main {
-  padding-top: 30px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center; /* centers horizontally */
@@ -67,7 +67,7 @@ main {
 }
 
 section {
-  padding-top: 30px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center; /* centers horizontally */
@@ -82,7 +82,7 @@ section {
 h1 {
   padding-bottom: 50px;
   text-transform: uppercase;
-  font-size: xxx-large;
+  font-size: xx-large;
 }
 
 h2 {
