@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //reset button
     const resetButton = document.getElementById('reset-button');
     resetButton.addEventListener('click', resetGame);
+    resetButton.addEventListener('touchstart', resetGame);
 
     //add red flag with right click
     function addFlag(square) {
