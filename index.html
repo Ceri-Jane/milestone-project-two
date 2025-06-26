@@ -43,7 +43,7 @@
     <main>
         <!--main heading-->
         <div class="container">
-            <h1>💣<u>Minesweeper</u></h1>
+            <h1><u>Minesweeper</u></h1>
         </div>   
 
         <!--Game area-->
@@ -60,15 +60,34 @@
             <P class="joystick">🕹️</P>
             <div class="scroll-box">
                 <p><u>Goal:</u></p>
-                <p>To win the game you must mark the 20 squares, containing bombs '💣', with a red flag '🚩'.</p><br>
+                <p>To win the game you must mark the 20 squares, containing bombs '💣', with a red flag '🚩'.</p>
 
                 <p><u>Controls:</u></p>
-                <p>left mouse click to select a square.</p>
-                <p>right mouse click to place/remove a red flag.</p><br>
+                <ol>
+                    <li>Desktop</li><br>
+                        <ul>
+                            <li>Left mouse click to select a square.</li><br>
+                            <li>Right mouse click to place/remove a red flag.</li><br>
+                        </ul>
+                    <li>Mobile/Tablet</li><br>  
+                        <ul>
+                            <li>Short tap to select a square.</li><br>
+                            <li>Long press to place/remove a red flag.</li><br>
+                        </ul>  
+                </ol>
 
                 <p><u>Instructions:</u></p>
                 <ol>
-                    <li>Start by clicking a square and hope it doesn't contain a bomb or you will imediately fail.</li>
+                    <li>Start by clicking a square (hope it doesn't contain a bomb or you will imediately fail) and numbers will appear .</li><br>
+                        <ul>
+                            <li>Each number tells you how many mines are in the 8 surrounding squares.</li><br>
+                            <li>For example, a “2” means there are 2 mines touching that square.</li><br>
+                        </ul>
+                    <li>Use logic to figure out where the mines are.</li><br>
+                        <ul>
+                            <li>If a square has a “1” and you can see only one unopened square next to it, that square must be a mine.</li><br>
+                            <li>You can then right-click (or long-press on mobile) to flag that square as a mine.</li><br>
+                        </ul>    
                     <li>Numbers will appear</li>
                     <li>Numbers will appear</li>
                     <li>Numbers will appear</li>
