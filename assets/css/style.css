@@ -152,6 +152,10 @@ div {
     padding-top: 70px;
 }
 
+.joystick {
+  font-size: xxx-large;
+}
+
 .scroll-box {
   background-color: var(--top-highlight-color);
   text-align: left;
