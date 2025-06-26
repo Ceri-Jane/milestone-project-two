@@ -154,6 +154,7 @@ div {
 
 .joystick {
   font-size: xxx-large;
+  margin-top: -20px;
 }
 
 .scroll-box {
