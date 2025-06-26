@@ -437,6 +437,8 @@ footer {
     padding: 8px 16px;
     margin-top: 10px;
     cursor: pointer;
+    position: relative;
+    z-index: 10;
   }
 
   /* Scroll box and about box */
