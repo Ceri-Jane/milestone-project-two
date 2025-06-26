@@ -185,7 +185,8 @@ div {
   width: 700px;
   height: 400px;
   border: 5px solid var(--border-color);
-  padding-left: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 footer {
