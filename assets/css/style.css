@@ -166,7 +166,8 @@ div {
   margin-top: -20px;
 }
 
-.scroll-box {
+.scroll-box,
+.about-box {
   background-color: var(--top-highlight-color);
   text-align: left;
   font-size: 15px;
@@ -177,17 +178,6 @@ div {
   padding-left: 30px;
   padding-right: 30px;
   margin-bottom: 100px;
-}
-
-.about-box {
-  background-color: var(--top-highlight-color);
-  text-align: left;
-  font-size: 15px;
-  width: 700px;
-  height: 400px;
-  border: 5px solid var(--border-color);
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 footer {
