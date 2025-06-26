@@ -58,98 +58,107 @@
 }
 
 main {
-    padding-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* centers horizontally */
-    justify-content: flex-start; /* top alignment */
-    min-height: 100vh; /* helps with vertical space */
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers horizontally */
+  justify-content: flex-start; /* top alignment */
+  min-height: 100vh; /* helps with vertical space */
+}
+
+section {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers horizontally */
+  justify-content: flex-start; /* top alignment */
+  min-height: 70vh; /* helps with vertical space */
 }
 
 .container {
-    width: 600px;
+  width: 600px;
 }
 
 h1 {
-    padding-bottom: 50px;
-    text-transform: uppercase;
-    font-size: xxx-large;
+  padding-bottom: 50px;
+  text-transform: uppercase;
+  font-size: xxx-large;
 }
 
 h2 {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 .grid {
-    height: 500px;
-    width: 500px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: var(--background-color);
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border: 10px solid var(--border-color);
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--background-color);
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: 10px solid var(--border-color);
 }
 
 #reset-button {
-    font-family: var(--primary-font);
-    font-size: 16px;
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    background-color: var(--shadow-color);
-    color: var(--left-highlight-color);
-    cursor: pointer;
-    box-shadow: 2px 2px 0 var(--border-color);
+  font-family: var(--primary-font);
+  font-size: 16px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--shadow-color);
+  color: var(--left-highlight-color);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border-color);
 }
 
 #reset-button:hover {
-    background-color: var(--top-highlight-color);
-    color: var(--border-color);
+  background-color: var(--top-highlight-color);
+  color: var(--border-color);
 }
 
 div {
-    font-size: 25px;
-    text-align: center;
-    font-family: var(--primary-font);  
+  font-size: 25px;
+  text-align: center;
+  font-family: var(--primary-font);  
 }
 
 .valid,
 .bomb {
-    border: 5px solid;
-    border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color) var(--left-highlight-color);
-    box-sizing: border-box;
-    /*set to 10% of grid height & width so that exactly 10x10 squares can fit in the grid*/
-    width: 50px;
-    height: 50px;
+  border: 5px solid;
+  border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color) var(--left-highlight-color);
+  box-sizing: border-box;
+  /*set to 10% of grid height & width so that exactly 10x10 squares can fit in the grid*/
+  width: 50px;
+  height: 50px;
 }
 
 .checked {
-    width: 50px;
-    height: 50px;
-    border: 2px solid var(--shadow-color);
-    box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--shadow-color);
+  box-sizing: border-box;
 }
 
 .one {
-    color: var(--one-color);
+  color: var(--one-color);
 }
 
 .two {
-    color: var(--two-color);
+  color: var(--two-color);
 }
 
 .three {
-    color: var(--three-color);
+  color: var(--three-color);
 }
 
 .four {
-    color: var(--four-color);
+  color: var(--four-color);
 }
 
 #how-to-play {
-    padding-top: 70px;
+  padding-top: 70px;
 }
 
 .joystick {
