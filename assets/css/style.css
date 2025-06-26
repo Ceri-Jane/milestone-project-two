@@ -72,7 +72,7 @@ section {
   flex-direction: column;
   align-items: center; /* centers horizontally */
   justify-content: flex-start; /* top alignment */
-  min-height: 70vh; /* helps with vertical space */
+  min-height: 80vh; /* helps with vertical space */
 }
 
 .container {
@@ -226,7 +226,7 @@ footer {
   color: var(--left-highlight-color);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 320px) {
   /* Containers full width with some padding */
   .container {
     width: 95vw;
@@ -351,3 +351,183 @@ footer {
     font-size: 50px;
   }
 }
+
+@media screen and (max-width: 400px), screen and (max-width: 600px)  {
+  .container {
+    width: 95vw;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  /* Adjust header/nav */
+  .topnav {
+    height: 60px;
+    width: 91vw;
+    padding: 0 10px;
+    font-size: 9px;
+  }
+  .topnav a {
+    padding: 10px 8px;
+    margin-right: -40px;
+    margin-left: -40px;
+    font-size: 9px;
+  }
+
+  /* Headings scale down */
+  h1 {
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  h2 {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: -30px;
+  }
+
+  p,
+  ol,
+  ul,
+  li {
+    font-size: 10px;
+  }
+
+  .joystick {
+    font-size: 30px;
+    margin-top: -10px;
+  }
+
+  /* Main & section layout - stack and center */
+  main, section {
+    padding-top: 60px; /* account for fixed nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  section {
+    margin-bottom: -150px;
+  }
+
+  /* Game grid responsive */
+  .grid {
+    width: 90vw;
+    max-width: 385px;
+    height: auto;
+    margin: 20px auto;
+    border-width: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+
+  /* Each square in grid */
+  .valid, .bomb, .checked {
+    width: calc((90vw - 12px) / 10); /* 10 squares per row */
+    height: calc((90vw - 12px) / 10);
+    border-width: 2px;
+    box-sizing: border-box;
+  }
+
+  /* Reset button */
+  #reset-button {
+    font-size: 12px;
+    padding: 8px 16px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  /* Scroll box and about box */
+  .scroll-box, .about-box {
+    width: 90vw;
+    max-width: 360px;
+    height: 300px;
+    padding: 15px 20px;
+    margin-bottom: 50px;
+    font-size: 14px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  /* Divs with text */
+  div {
+    font-size: 15px;
+  }
+
+  /* Footer adjustments */
+  footer {
+    font-size: 14px;
+    padding: 10px 5px;
+    width: 93vw;
+  }
+
+  .logo-image {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  /* Social icons smaller and spaced */
+  #social-networks {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 10px 0;
+  }
+
+  #social-networks i {
+    font-size: 50px;
+  }
+}
+
+/* Tablets and up */
+@media (min-width: 768px) {
+  .container {
+    width: 600px; /* fixed width container */
+  }
+
+  .grid {
+    width: 500px;
+    height: 500px;
+    margin-left: 50px;
+  }
+
+  .valid, .bomb, .checked {
+    width: 50px;
+    height: 50px;
+    border-width: 5px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .scroll-box, .about-box {
+    width: 600px;
+    height: 400px;
+    font-size: 15px;
+    padding: 20px 30px;
+  }
+
+  #reset-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  footer {
+    font-size: 17px;
+    padding: 10px 0;
+  }
+
+  #social-networks i {
+    font-size: 80px;
+  }
+}
+
