@@ -144,6 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function checkForWin() {
+        if (isGameOver) return; // Prevent duplicate win messages once game is over and won
+
         let matches = 0;
 
         for (let i = 0; i < squares.length; i++) {
