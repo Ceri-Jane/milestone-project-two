@@ -177,6 +177,7 @@ div {
   width: 700px;
   height: 400px;
   overflow-y: scroll;
+  scrollbar-color: var(--left-highlight-color) var(--border-color);
   border: 5px solid var(--border-color);
   padding-left: 30px;
   padding-right: 30px;
