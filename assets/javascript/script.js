@@ -36,7 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             //right click for adding flags
-            square.addEventListener('contextmenu', function () {
+            //add function to prevent context menu from appearing on desktop right click
+            square.addEventListener('contextmenu', function (e) {
+                e.preventDefault(); // ✅ NEW: prevent context menu
                 addFlag(square);
             });
         }
