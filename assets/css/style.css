@@ -99,6 +99,9 @@ h2 {
   margin-top: 20px;
   margin-bottom: 10px;
   border: 10px solid var(--border-color);
+  -webkit-user-select: none; /* Disable text selection in Safari */
+  user-select: none;
+  -webkit-touch-callout: none; /* Disable long-press callout (like copy/paste on iOS) */
 }
 
 #reset-button {
