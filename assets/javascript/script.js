@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //right click for adding flags
             //add function to prevent context menu from appearing on desktop right click
             square.addEventListener('contextmenu', function (e) {
-                e.preventDefault(); // ✅ NEW: prevent context menu
+                e.preventDefault(); //prevent context menu
                 addFlag(square);
             });
         }
@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //define function for click
     function click(square) {
-        console.log(square);
         //continue the game if a bomb isn't clicked
         if (isGameOver || square.classList.contains('checked') || square.classList.contains('flag')) return;
 
@@ -108,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (square.classList.contains('bomb')) {
             gameOver();
         } else {
+            //move .add('checked') here so it's always applied
+            square.classList.add('checked');
             //show how many bombs are around the square that was selected, if any
             let total = square.getAttribute('data');
             if (total != 0) {
@@ -121,56 +122,23 @@ document.addEventListener('DOMContentLoaded', function () {
             //fans out if there are zero bombs around the area of the selected square
             checkSquare(square);
         }
-        square.classList.add('checked');
     }
 
     //add function to fan out if zero bombs are around the area of selected square
     function checkSquare(square) {
-        const currentId = square.id;
-        const isLeftEdge = (currentId % width === 0);
-        const isRightEdge = (currentId % width === width - 1);
+        const id = parseInt(square.id);
+        const isLeftEdge = (id % width === 0);
+        const isRightEdge = (id % width === width - 1);
 
-        setTimeout(function () {
-            if (currentId > 0 && !isLeftEdge) {
-                const newId = parseInt(currentId) - 1;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
-            if (currentId > 9 && !isRightEdge) {
-                const newId = parseInt(currentId) + 1 - width;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
-            if (currentId > 10) {
-                const newId = parseInt(currentId) - width;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
-            if (currentId > 11 && !isLeftEdge) {
-                const newId = parseInt(currentId) - 1 - width;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
-            if (currentId < 98 && !isRightEdge) {
-                const newId = parseInt(currentId) + 1;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
-            if (currentId < 90 && !isLeftEdge) {
-                const newId = parseInt(currentId) - 1 + width;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
-            if (currentId < 88 && !isRightEdge) {
-                const newId = parseInt(currentId) + 1 + width;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
-            if (currentId < 89) {
-                const newId = parseInt(currentId) + width;
-                const newSquare = document.getElementById(newId);
-                click(newSquare);
-            }
+    setTimeout(function () {
+            if (id > 0 && !isLeftEdge) click(document.getElementById(id - 1));
+            if (id > 9 && !isRightEdge) click(document.getElementById(id + 1 - width));
+            if (id > 10) click(document.getElementById(id - width));
+            if (id > 11 && !isLeftEdge) click(document.getElementById(id - 1 - width));
+            if (id < 98 && !isRightEdge) click(document.getElementById(id + 1));
+            if (id < 90 && !isLeftEdge) click(document.getElementById(id - 1 + width));
+            if (id < 88 && !isRightEdge) click(document.getElementById(id + 1 + width));
+            if (id < 89) click(document.getElementById(id + width));
             //fans out after 10 miliseconds
         }, 10);
     }
@@ -210,6 +178,9 @@ document.addEventListener('DOMContentLoaded', function () {
         isGameOver = false;
         flags = 0;
         result.innerHTML = '';
+
+        //reset flagsLeft count on reset
+        flagsLeft.innerHTML = bombAmount;
 
         // Recreate the board
         createBoard();
