@@ -169,8 +169,7 @@ div {
   margin-top: -20px;
 }
 
-.scroll-box,
-.about-box {
+.scroll-box {
   background-color: var(--top-highlight-color);
   text-align: left;
   font-size: 15px;
@@ -183,7 +182,6 @@ div {
   padding-right: 30px;
   margin-bottom: 100px;
 }
-
 
 footer {
   font-family: var(--primary-font);  
@@ -303,8 +301,8 @@ footer {
     cursor: pointer;
   }
 
-  /* Scroll box and about box */
-  .scroll-box, .about-box {
+  /* Scroll box */
+  .scroll-box {
     width: 90vw;
     max-width: 360px;
     height: 300px;
@@ -436,8 +434,8 @@ footer {
     z-index: 10;
   }
 
-  /* Scroll box and about box */
-  .scroll-box, .about-box {
+  /* Scroll box */
+  .scroll-box {
     width: 90vw;
     max-width: 360px;
     height: 300px;
@@ -506,7 +504,7 @@ footer {
     font-size: 1.75rem;
   }
 
-  .scroll-box, .about-box {
+  .scroll-box {
     width: 600px;
     height: 400px;
     font-size: 15px;
