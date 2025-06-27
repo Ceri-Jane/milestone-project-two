@@ -9,8 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
     let squares = [];
     let isGameOver = false;
     let flags = 0;
-    //iOS Safari ignores contextmenu events so adding this
+    //iOS Safari ignores contextmenu events
     let longPressTimer = null;
+
+    // Detect if the user is on an iOS device because iOS Safari ignores contextmenu events
+    function isIOS() {
+        return /iP(hone|od|ad)/.test(navigator.userAgent);
+    }
 
     //Create game board
     function createBoard() {
@@ -27,38 +32,37 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div');
             square.id = i;
-            //add class name to each square to match what string is in it at the time
             square.classList.add(shuffledArray[i]);
             grid.appendChild(square);
             squares.push(square);
 
-            //normal left click
+            // Left click
             square.addEventListener('click', function () {
                 click(square);
             });
 
-            // ✅ Right-click for desktop
+            // Right-click (desktop + supported mobile)
             square.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-            addFlag(square);
+                e.preventDefault();
+                addFlag(square);
             });
 
-            // ✅ Long-press for iOS mobile
-            square.addEventListener('touchstart', function () {
-            longPressTimer = setTimeout(() => {
-            addFlag(square);
-            }, 500); // hold for 500ms
-        });
+            // Long-press (iOS only because iOS Safari ignores contextmenu events)
+            if (isIOS()) {
+                square.addEventListener('touchstart', function () {
+                    longPressTimer = setTimeout(() => {
+                        addFlag(square);
+                    }, 500);
+                });
 
-// Clear the timer if touch ends early (no long-press)
-square.addEventListener('touchend', function () {
-    clearTimeout(longPressTimer);
-});
+                square.addEventListener('touchend', function () {
+                    clearTimeout(longPressTimer);
+                });
 
-// Clear the timer if finger moves (prevents accidental flagging)
-square.addEventListener('touchmove', function () {
-    clearTimeout(longPressTimer);
-});
+                square.addEventListener('touchmove', function () {
+                    clearTimeout(longPressTimer);
+                });
+            }
         }
 
         //add numbers for the amount of bombs around the square thats clicked
