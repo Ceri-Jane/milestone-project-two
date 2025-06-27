@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let squares = [];
     let isGameOver = false;
     let flags = 0;
+    //iOS Safari ignores contextmenu events so adding this
+    let longPressTimer = null;
 
     //Create game board
     function createBoard() {
@@ -35,12 +37,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 click(square);
             });
 
-            //right click for adding flags
-            //add function to prevent context menu from appearing on desktop right click
+            // ✅ Right-click for desktop
             square.addEventListener('contextmenu', function (e) {
-                e.preventDefault(); //prevent context menu
-                addFlag(square);
+            e.preventDefault();
+            addFlag(square);
             });
+
+            // ✅ Long-press for iOS mobile
+            square.addEventListener('touchstart', function () {
+            longPressTimer = setTimeout(() => {
+            addFlag(square);
+            }, 500); // hold for 500ms
+        });
+
+// Clear the timer if touch ends early (no long-press)
+square.addEventListener('touchend', function () {
+    clearTimeout(longPressTimer);
+});
+
+// Clear the timer if finger moves (prevents accidental flagging)
+square.addEventListener('touchmove', function () {
+    clearTimeout(longPressTimer);
+});
         }
 
         //add numbers for the amount of bombs around the square thats clicked
