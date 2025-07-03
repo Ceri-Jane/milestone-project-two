@@ -9,7 +9,7 @@ let bombAmount = 20;
 let squares = [];
 let isGameOver = false;
 let flags = 0;
-/* iOS Safari ignores contextmenu events */
+// iOS Safari ignores contextmenu events
 let longPressTimer = null;
 
 /* Detect if the user is on an iOS device because
@@ -18,15 +18,16 @@ function isIOS() {
     return /iP(hone|od|ad)/.test(navigator.userAgent);
 }
 
-/* Create game board 
-get shuffled game array with random 20 bombs
-and fill with a string named bomb
-and fill all other 80 squares with a string named valid
-and shuffle the 20 bombs strings together with the 80 valid strings*/
+// Create game board
 function createBoard() {
     flagsLeft.innerHTML = bombAmount;
+
+    // get shuffled game array with random 20 bombs
+    // and fill with a string named bomb
     const bombArray = Array(bombAmount).fill("bomb");
+    // fill all other 80 squares with a string named valid
     const emptyArray = Array(width * width - bombAmount).fill("valid");
+    // shuffle the 20 bombs strings together with the 80 valid strings
     const gameArray = emptyArray.concat(bombArray);
     const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
 
@@ -48,7 +49,7 @@ function createBoard() {
             addFlag(square);
         });
 
-        // Long-press (iOS only because iOS
+        // Long-press (iOS only)
         // Safari ignores contextmenu events)
         if (isIOS()) {
             square.addEventListener("touchstart", function () {
@@ -72,10 +73,10 @@ function createBoard() {
     for (let i = 0; i < squares.length; i++) {
         let total = 0;
         // if clicking on a box on the left edge, do not count bombs
-        in boxes to the left as there are no boxes here */
+        // in boxes to the left as there are no boxes here
         const isLeftEdge = (i % width === 0);
         // if clicking on a box on the right edge, do not count bombs
-        //in boxes to the right as there are no boxes here
+        // in boxes to the right as there are no boxes here
         const isRightEdge = (i % width === width - 1);
 
         if (squares[i].classList.contains("valid")) {
@@ -84,9 +85,9 @@ function createBoard() {
                 !isLeftEdge &&
                 squares[i - 1].classList.contains("bomb")
             ) total++;
-            //check square to the top and right
-            //of the one selected & makes sure
-            //not to check any non-existant boxes above the top row
+            // check square to the top and right
+            // of the one selected & makes sure
+            // not to check any non-existant boxes above the top row
             if (
                 i > 9 &&
                 !isRightEdge &&
@@ -117,7 +118,7 @@ function createBoard() {
                 squares[i - 1 + width].classList.contains("bomb")
             ) total++;
             // check square directly below and to
-            // the right of the one selected 
+            // the right of the one selected
             if (
                 i < 88 &&
                 !isRightEdge &&
@@ -132,6 +133,8 @@ function createBoard() {
         }
     }
 }
+
+createBoard();
 
 // reset button
 const resetButton = document.getElementById("reset-button");
@@ -157,7 +160,7 @@ function addFlag(square) {
     }
 }
 
-/* define function for click */
+// define function for click
 function click(square) {
     // continue the game if a bomb isn't clicked
     if (
@@ -172,8 +175,7 @@ function click(square) {
     } else {
         // move .add('checked') here so it's always applied
         square.classList.add("checked");
-        // show how many bombs are around the square that was
-        //selected, if any
+        // show how many bombs are around the square that was selected
         let total = square.getAttribute("data");
         if (total != 0) {
             if (total == 1) square.classList.add("one");
@@ -265,7 +267,7 @@ function resetGame() {
     createBoard();
 }
 
-//Bootstrap mobile navbar collapse on in-page link click
+// Bootstrap mobile navbar collapse on in-page link click
 document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
 
@@ -279,5 +281,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
-createBoard();
