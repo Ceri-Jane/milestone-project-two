@@ -48,10 +48,10 @@
                             <a class="nav-link" href="index.html#how-to-play" aria-label="Minesweeper how to play section on home page">How to Play</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#contact" aria-label="Ceri-Jane social media links in footer section on home page">Contact</a>
+                            <a class="nav-link" href="index.html#about" aria-label="Minesweeper about section on home page">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html" aria-label="Minesweeper about page">About</a>
+                            <a class="nav-link" href="index.html#contact" aria-label="Ceri-Jane social media links in footer section on home page">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -76,14 +76,14 @@
         </div>
 
         <!--how to play section-->
-        <div>
+        <div class="game-container">
             <h2 id="how-to-play">How to play:</h2>
             <P class="joystick">🕹️</P>
             <div class="scroll-box">
-                <p><u>Goal:</u></p>
+                <p><u><b>Goal:</b></u></p>
                 <p>To win the game you must mark the 20 squares, containing hidden bombs '💣', with a red flag '🚩'.</p>
 
-                <p><u>Controls:</u></p>
+                <p><u><b>Controls:</b></u></p>
                 <ol>
                     <li>
                         <p>🖥️Desktop</p>
@@ -94,7 +94,7 @@
                         </ul>
                     </li>    
                     <li>
-                        <p>📱Mobile/Tablet</p> 
+                        <p>📱Mobile/Tablet<</p> 
                         <ul>
                             <li>Short tap to select and reveal a square.</li>
                             <li>Long press to place/remove a red flag.</li>
@@ -103,7 +103,7 @@
                     </li>     
                 </ol>
 
-                <p><u>Instructions:</u></p>
+                <p><u><b>Instructions:</b></u></p>
                 <ol>
                     <li>
                         <p>Start by clicking a square (hope it doesn't contain a bomb or you will imediately fail) and numbers will appear .</p><br>
@@ -137,6 +137,49 @@
                 </ol>
             </div>    
         </div>
+        
+        <div class="game-container">
+            <h2 id="about">About Minesweeper Game:</h2>
+            <P>Interactive Front-End Project</P>
+            <div class="scroll-box">
+                <h3>Overview</h3>
+            <p>Welcome to my Minesweeper game — a classic puzzle game brought to life with pure HTML, CSS, and JavaScript. This project demonstrates an interactive front-end application where users engage directly with the data on the page, manipulating the game board and receiving immediate feedback based on their actions.</p>
+            
+            <h3>What is Minesweeper?</h3>
+            <p>Minesweeper is a logic-based game where players uncover squares on a grid without detonating hidden mines. Numbers on revealed squares indicate how many mines lie adjacent to them, guiding players to avoid bombs while clearing the board. The challenge lies in deducing safe moves through reasoning and deduction.</p>
+            
+            <h3>Interactive Functionality</h3>
+            <p>This game’s core interactive feature is its dynamic grid, where users click squares to reveal either a number or a mine. Flags can be placed to mark suspected mines, and the number of remaining flags updates in real time. The interface immediately responds to clicks by updating the display and game state, providing instant visual feedback.</p>
+            <p>Key interactive elements include:</p>
+            <ul>
+                <li>Left-click (short tap on touchscreen devices) to reveal a square</li>
+                <li>Right-click (long press on touchscreen devices) to flag/unflag a square as a potential mine</li>
+                <li>Game over or win messages displayed dynamically based on user actions</li>
+                <li>Real-time counter showing remaining flags</li>
+            </ul>
+            <h3>Technologies Used</h3>
+            <ul>
+                <li>HTML5: For semantic page structure and the game grid layout</li>
+                <li>CSS3: For styling the game board, buttons, and responsive design</li>
+                <li>JavaScript (Vanilla): All game logic, interactivity, and dynamic DOM manipulation were coded by hand using tutorials, independent research, and assistance from ChatGPT—no external JavaScript libraries or frameworks are used in the game itself</li>
+                <li>Bootstrap: Used only for the mobile navbar component; this is the sole external library integrated into the project</li>
+            </ul>
+            <p>This project is a predominantly original build showcasing my skills in vanilla JavaScript development, with Bootstrap included exclusively to provide a responsive navbar.</p>    
+            <h3>Project Requirements Addressed</h3>
+            <ul>
+                <li>Dynamic Front End: Custom JavaScript creates a fully interactive Minesweeper game with a responsive grid and user feedback</li>
+                <li>Site Responses: User clicks produce immediate changes in the game board, flags, and messages</li>
+                <li>Information Architecture: Clear layout with a main game area and an info panel showing flags left and results; simple navigation included where appropriate</li>
+                <li>Documentation: Accompanied by README.md explaining the project, purpose, technologies, and usage instructions</li>
+                <li>Version Control: The project is maintained in GitHub with a public repository tracking all changes</li>
+                <li>Attribution: All game code is original and authored by me. Any code inspiration came from tutorials, research, or ChatGPT assistance and is properly noted. The only external library used is Bootstrap for the navbar</li>
+                <li>Deployment: The site is deployed via GitHub Pages, making it publicly accessible and easy to share</li>
+            </ul>
+            <h3>Value Provided</h3>
+                <p>Users benefit from an engaging interactive experience that challenges logic and problem-solving skills. The game adapts immediately to user inputs, allowing a personalized and intuitive gameplay flow. As the project creator, I advanced my skills in front-end web development, mastering core web technologies and project deployment.</p>
+            </div>    
+        </div>
+
 
     </main>
 

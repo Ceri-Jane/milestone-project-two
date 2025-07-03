@@ -88,6 +88,11 @@ h2 {
   font-size: x-large;
 }
 
+h3 {
+  font-size: large;
+  font-weight: bold;
+}
+
 .game-grid {
   height: 500px;
   width: 500px;
@@ -159,7 +164,8 @@ div {
   color: var(--four-color);
 }
 
-#how-to-play {
+#how-to-play,
+#about {
   padding-top: 70px;
 }
 
