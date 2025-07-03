@@ -267,3 +267,18 @@ function resetGame() {
     /* Recreate the board */
     createBoard();
 }
+
+/* ===== Bootstrap mobile navbar collapse on in-page link click ===== */
+document.addEventListener('DOMContentLoaded', function () {
+  const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
+
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      if (navbarCollapse.classList.contains('show')) {
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+        bsCollapse.hide();
+      }
+    });
+  });
+});

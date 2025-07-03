@@ -17,44 +17,42 @@
 
 /* Global styles */
 
-/* Add a black background color to the top navigation */
-.topnav {
-  font-family: var(--primary-font);  
+/* Custom Bootstrap Navbar Styling */
+.custom-navbar {
+  font-family: var(--primary-font);
   background-color: var(--border-color);
-  overflow: hidden;
-  display: flex;
-  justify-content: center; /* center horizontally */
-  position: fixed;
-  top: 0;
-  width: 100%;
+  padding: 0px;
   z-index: 1000;
-  height: 60px;
-  align-items: center;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
   color: var(--left-highlight-color);
-  text-align: center;
-  padding: 14px 16px;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 14px 20px;
   text-decoration: none;
-  font-size: 17px;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
+.custom-navbar .nav-link:hover,
+.custom-navbar .navbar-brand:hover {
   background-color: var(--top-highlight-color);
   color: var(--border-color);
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
+.custom-navbar .nav-link.active {
   background-color: var(--shadow-color);
   color: var(--left-highlight-color);
 }
 
-.topnav a:not(:last-child) {
-  margin-right: 40px;
+/* Custom toggler icon for burger */
+.custom-toggler {
+  background-color: var(--left-highlight-color);
+  border: none;
+}
+
+.logo {
+  width: 35px;
 }
 
 main {
@@ -228,20 +226,6 @@ footer {
     box-sizing: border-box;
   }
 
-  /* Adjust header/nav */
-  .topnav {
-    height: 60px;
-    width: 285px;
-    padding: 0 10px;
-    font-size: 7px;
-  }
-  .topnav a {
-    padding: 10px 8px;
-    margin-right: -40px;
-    margin-left: -40px;
-    font-size: 7px;
-  }
-
   /* Headings scale down */
   h1 {
     font-size: 1.5rem;
@@ -351,20 +335,6 @@ footer {
     max-width: 100%;
     padding: 0 10px;
     box-sizing: border-box;
-  }
-
-  /* Adjust header/nav */
-  .topnav {
-    height: 60px;
-    width: 91vw;
-    padding: 0 10px;
-    font-size: 9px;
-  }
-  .topnav a {
-    padding: 10px 8px;
-    margin-right: -40px;
-    margin-left: -40px;
-    font-size: 9px;
   }
 
   /* Headings scale down */

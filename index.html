@@ -29,12 +29,33 @@
 <body>
 
     <header>
-        <!--nav bar-->
-        <nav class="topnav">
-            <a class="active" aria-current="page" href="index.html" aria-label="Minesweeper home page">Minesweeper</a>
-            <a href="#how-to-play" aria-label="Minesweeper how to play section on home page">How to play</a>
-            <a href="#contact" aria-label="Ceri-Jane social media links in footer section on home page">Contact</a>
-            <a href="about.html" aria-label="Minesweeper About page">About</a>
+        
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md custom-navbar fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html" aria-label="Minesweeper home page">
+                    <img src="assets/favicon/android-chrome-192x192.png" alt="Minesweeper logo" class="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon custom-toggler"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html" aria-label="Minesweeper home page">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#how-to-play" aria-label="Minesweeper how to play section on home page">How to Play</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contact" aria-label="Ceri-Jane social media links in footer section on home page">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html" aria-label="Minesweeper about page">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
 
     </header>
@@ -158,6 +179,8 @@
 
     <!--Custom JS-->
     <script src="assets/javascript/script.js"></script>
+
+
 
 </body>
 
