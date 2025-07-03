@@ -18,16 +18,15 @@ function isIOS() {
     return /iP(hone|od|ad)/.test(navigator.userAgent);
 }
 
-/* Create game board */
+/* Create game board 
+get shuffled game array with random 20 bombs
+and fill with a string named bomb
+and fill all other 80 squares with a string named valid
+and shuffle the 20 bombs strings together with the 80 valid strings*/
 function createBoard() {
     flagsLeft.innerHTML = bombAmount;
-
-    /* get shuffled game array with random 20 bombs
-    and fill with a string named bomb */
     const bombArray = Array(bombAmount).fill("bomb");
-    /* fill all other 80 squares with a string named valid */
     const emptyArray = Array(width * width - bombAmount).fill("valid");
-    /* shuffle the 20 bombs strings together with the 80 valid strings */
     const gameArray = emptyArray.concat(bombArray);
     const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
 
@@ -38,19 +37,19 @@ function createBoard() {
         grid.appendChild(square);
         squares.push(square);
 
-        /* Left click */
+        // Left click
         square.addEventListener("click", function () {
             click(square);
         });
 
-        /* Right-click (desktop + supported mobile) */
+        // Right-click (desktop + supported mobile)
         square.addEventListener("contextmenu", function (e) {
             e.preventDefault();
             addFlag(square);
         });
 
-        /* Long-press (iOS only because iOS
-        Safari ignores contextmenu events) */
+        // Long-press (iOS only because iOS
+        // Safari ignores contextmenu events)
         if (isIOS()) {
             square.addEventListener("touchstart", function () {
                 longPressTimer = setTimeout(() => {
@@ -68,15 +67,15 @@ function createBoard() {
         }
     }
 
-    /* add numbers for the amount of bombs
-    around the square thats clicked */
+    // add numbers for the amount of bombs
+    // around the square thats clicked
     for (let i = 0; i < squares.length; i++) {
         let total = 0;
-        /* if clicking on a box on the left edge, do not count bombs
+        // if clicking on a box on the left edge, do not count bombs
         in boxes to the left as there are no boxes here */
         const isLeftEdge = (i % width === 0);
-        /* if clicking on a box on the right edge, do not count bombs
-        in boxes to the right as there are no boxes here */
+        // if clicking on a box on the right edge, do not count bombs
+        //in boxes to the right as there are no boxes here
         const isRightEdge = (i % width === width - 1);
 
         if (squares[i].classList.contains("valid")) {
@@ -85,46 +84,46 @@ function createBoard() {
                 !isLeftEdge &&
                 squares[i - 1].classList.contains("bomb")
             ) total++;
-            /* check square to the top and right
-            of the one selected & makes sure
-            not to check any non-existant boxes above the top row */
+            //check square to the top and right
+            //of the one selected & makes sure
+            //not to check any non-existant boxes above the top row
             if (
                 i > 9 &&
                 !isRightEdge &&
                 squares[i + 1 - width].classList.contains("bomb")
             ) total++;
-            /* check square directly above the one selected */
+            // check square directly above the one selected
             if (
                 i > 10 &&
                 squares[i - width].classList.contains("bomb")
             ) total++;
-            /* check square to the top and left of the one selected */
+            // check square to the top and left of the one selected
             if (
                 i > 11 &&
                 !isLeftEdge &&
                 squares[i - width - 1].classList.contains("bomb")
             ) total++;
-            /* check square directly to the right of the one selected */
+            // check square directly to the right of the one selected
             if (
                 i < 99 &&
                 !isRightEdge &&
                 squares[i + 1].classList.contains("bomb")
             ) total++;
-            /* check square directly below and to
-            the left of the one selected */
+            // check square directly below and to
+            // the left of the one selected
             if (
                 i < 90 &&
                 !isLeftEdge &&
                 squares[i - 1 + width].classList.contains("bomb")
             ) total++;
-            /* check square directly below and to
-            the right of the one selected */
+            // check square directly below and to
+            // the right of the one selected 
             if (
                 i < 88 &&
                 !isRightEdge &&
                 squares[i + 1 + width].classList.contains("bomb")
             ) total++;
-            /* check square directly below the one selected */
+            // check square directly below the one selected
             if (
                 i < 89 &&
                 squares[i + width].classList.contains("bomb")
@@ -134,12 +133,12 @@ function createBoard() {
     }
 }
 
-/* reset button */
+// reset button
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", resetGame);
 resetButton.addEventListener("touchstart", resetGame);
 
-/* add red flag with right click */
+// add red flag with right click
 function addFlag(square) {
     if (isGameOver) return;
     if (!square.classList.contains("checked") && (flags < bombAmount)) {
@@ -160,21 +159,21 @@ function addFlag(square) {
 
 /* define function for click */
 function click(square) {
-    /* continue the game if a bomb isn't clicked */
+    // continue the game if a bomb isn't clicked
     if (
         isGameOver ||
         square.classList.contains("checked") ||
         square.classList.contains("flag")
     ) return;
 
-    /* end the game if a bomb is clicked */
+    // end the game if a bomb is clicked
     if (square.classList.contains("bomb")) {
         gameOver();
     } else {
-        /* move .add('checked') here so it's always applied */
+        // move .add('checked') here so it's always applied
         square.classList.add("checked");
-        /* show how many bombs are around the square that was
-        selected, if any */
+        // show how many bombs are around the square that was
+        //selected, if any
         let total = square.getAttribute("data");
         if (total != 0) {
             if (total == 1) square.classList.add("one");
@@ -184,8 +183,8 @@ function click(square) {
             square.innerHTML = total;
             return;
         }
-        /* fans out if there are zero bombs around
-        the area of the selected square */
+        // fans out if there are zero bombs around
+        // the area of the selected square
         checkSquare(square);
     }
 }
@@ -214,12 +213,12 @@ setTimeout(function () {
             click(document.getElementById(id + 1 + width));
         if (id < 89)
             click(document.getElementById(id + width));
-        /* fans out after 10 miliseconds */
+        // fans out after 10 miliseconds
     }, 10);
 }
 
 function checkForWin() {
-    /* Prevent duplicate win messages once game is over and won */
+    // Prevent duplicate win messages once game is over and won
     if (isGameOver) return;
 
     let matches = 0;
@@ -241,7 +240,7 @@ function gameOver() {
     result.innerHTML = "BOOOOOM! Game Over!";
     isGameOver = true;
 
-    /* reveal all bombs when the game is over */
+    // reveal all bombs when the game is over
     squares.forEach(function (square) {
         if (square.classList.contains("bomb")) {
             square.innerHTML = "💣";
@@ -252,21 +251,21 @@ function gameOver() {
 }
 
 function resetGame() {
-    /* Clear the grid and squares array */
+    // Clear the grid and squares array
     grid.innerHTML = "";
     squares = [];
     isGameOver = false;
     flags = 0;
     result.innerHTML = "";
 
-    /* reset flagsLeft count on reset */
+    // reset flagsLeft count on reset
     flagsLeft.innerHTML = bombAmount;
 
-    /* Recreate the board */
+    // Recreate the board
     createBoard();
 }
 
-/* ===== Bootstrap mobile navbar collapse on in-page link click ===== */
+//Bootstrap mobile navbar collapse on in-page link click
 document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
 
