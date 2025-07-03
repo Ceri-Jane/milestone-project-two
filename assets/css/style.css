@@ -10,14 +10,14 @@
 :root {
   --primary-font: "Press Start 2P", monospace;
   --border-color: #000000; /*black*/
-  --shadow-color: #4b4949;
+  --shadow-color: #4b4949; /*darker grey*/
   --left-highlight-color: #ffffff; /*white*/
-  --top-highlight-color: #d6d6d6; /*lighter-grey*/
+  --top-highlight-color: #d6d6d6; /*lighter grey*/
   --background-color: #a5a5a5; /*light grey*/
-  --one-color: #00422E;
-  --two-color: #131191;
-  --three-color: #6E0C59;
-  --four-color: #5C3100;
+  --one-color: #00422E; /*dark green*/
+  --two-color: #131191; /*dark blue*/
+  --three-color: #6E0C59; /*dark pink*/
+  --four-color: #5C3100; /*brown*/
 }
 
 /* Global styles */
@@ -309,8 +309,8 @@ footer {
   }
 
   .logo-image {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 290px;
+    max-height: 290px;
     margin: 10px auto;
     display: block;
   }
