@@ -134,8 +134,6 @@ function createBoard() {
     }
 }
 
-createBoard();
-
 /* reset button */
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", resetGame);
@@ -282,3 +280,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+createBoard();
