@@ -1,6 +1,11 @@
 /* Google fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* Global box-sizing reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* CSS Variables */
 :root {
   --primary-font: "Press Start 2P", monospace;
@@ -128,15 +133,15 @@ h3 {
 div {
   font-size: 25px;
   text-align: center;
-  font-family: var(--primary-font);  
+  font-family: var(--primary-font);
 }
 
 .valid,
 .bomb {
   border: 5px solid;
-  border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color) var(--left-highlight-color);
-  box-sizing: border-box;
-  /*set to 10% of game-grid height & width so that exactly 10x10 squares can fit in the game-grid*/
+  border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color)
+    var(--left-highlight-color);
+  /* set to 10% of game-grid height & width so that exactly 10x10 squares fit */
   width: 50px;
   height: 50px;
 }
@@ -145,7 +150,6 @@ div {
   width: 50px;
   height: 50px;
   border: 2px solid var(--shadow-color);
-  box-sizing: border-box;
 }
 
 .one {
@@ -189,7 +193,7 @@ div {
 }
 
 footer {
-  font-family: var(--primary-font);  
+  font-family: var(--primary-font);
   font-size: 17px;
   color: var(--left-highlight-color);
   background-color: var(--shadow-color);
@@ -198,7 +202,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  padding: 10px 0; 
+  padding: 10px 0;
 }
 
 .logo-image {
@@ -210,11 +214,7 @@ footer {
   text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   list-style-type: none;
 }
@@ -224,125 +224,20 @@ footer {
   color: var(--left-highlight-color);
 }
 
-@media screen and (max-width: 320px) {
-  /* game-containers full width with some padding */
+/* Small and extra small screens (up to 600px) */
+@media screen and (max-width: 600px) {
   .game-container {
     width: 95vw;
     max-width: 100%;
     padding: 0 10px;
-    box-sizing: border-box;
   }
 
-  /* Headings scale down */
   h1 {
     font-size: 1.5rem;
     padding-bottom: 20px;
     text-align: center;
   }
-  h2 {
-    font-size: 1rem;
-    text-align: center;
-  }
 
-  p,
-  ol,
-  ul,
-  li {
-    font-size: 10px;
-  }
-
-  .joystick {
-    font-size: 30px;
-  }
-
-  /* Main & section layout - stack and center */
-  main, section {
-    padding-top: 60px; /* account for fixed nav */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  /* Game game-grid responsive */
-  .game-grid {
-    width: 90vw;
-    max-width: 360px;
-    height: auto;
-    margin: 20px auto;
-    border-width: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-  }
-
-  /* Each square in game-grid */
-  .valid, .bomb, .checked {
-    width: calc((90vw - 12px) / 10); /* 10 squares per row */
-    height: calc((90vw - 12px) / 10);
-    border-width: 2px;
-    box-sizing: border-box;
-  }
-
-  /* Reset button */
-  #reset-button {
-    font-size: 12px;
-    padding: 8px 16px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-
-  /* Scroll box */
-  .scroll-box {
-    width: 90vw;
-    max-width: 360px;
-    height: 300px;
-    padding: 15px 20px;
-    margin-bottom: 50px;
-    font-size: 14px;
-    overflow-y: auto;
-    box-sizing: border-box;
-  }
-
-  /* Divs with text */
-  div {
-    font-size: 15px;
-  }
-
-  .logo-image {
-    max-width: 200px;
-    max-height: 200px;
-    margin: 10px auto;
-    display: block;
-  }
-
-  /* Social icons smaller and spaced */
-  #social-networks {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 10px 0;
-  }
-
-  #social-networks i {
-    font-size: 50px;
-  }
-}
-
-@media screen and (max-width: 400px), screen and (max-width: 600px)  {
-  .game-container {
-    width: 95vw;
-    max-width: 100%;
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
-
-  /* Headings scale down */
-  h1 {
-    font-size: 1.5rem;
-    padding-bottom: 20px;
-    text-align: center;
-  }
   h2 {
     font-size: 1rem;
     text-align: center;
@@ -361,8 +256,8 @@ footer {
     margin-top: -10px;
   }
 
-  /* Main & section layout - stack and center */
-  main, section {
+  main,
+  section {
     padding-top: 60px; /* account for fixed nav */
     display: flex;
     flex-direction: column;
@@ -374,27 +269,22 @@ footer {
     margin-bottom: -150px;
   }
 
-  /* Game game-grid responsive */
   .game-grid {
     width: 90vw;
     max-width: 385px;
     height: auto;
     margin: 20px auto;
     border-width: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
   }
 
-  /* Each square in game-grid */
-  .valid, .bomb, .checked {
-    width: calc((90vw - 12px) / 10); /* 10 squares per row */
+  .valid,
+  .bomb,
+  .checked {
+    width: calc((90vw - 12px) / 10);
     height: calc((90vw - 12px) / 10);
     border-width: 2px;
-    box-sizing: border-box;
   }
 
-  /* Reset button */
   #reset-button {
     font-size: 12px;
     padding: 8px 16px;
@@ -404,7 +294,6 @@ footer {
     z-index: 10;
   }
 
-  /* Scroll box */
   .scroll-box {
     width: 90vw;
     max-width: 360px;
@@ -413,10 +302,8 @@ footer {
     margin-bottom: 50px;
     font-size: 14px;
     overflow-y: auto;
-    box-sizing: border-box;
   }
 
-  /* Divs with text */
   div {
     font-size: 15px;
   }
@@ -428,7 +315,6 @@ footer {
     display: block;
   }
 
-  /* Social icons smaller and spaced */
   #social-networks {
     display: flex;
     justify-content: center;
@@ -453,7 +339,9 @@ footer {
     margin-left: 50px;
   }
 
-  .valid, .bomb, .checked {
+  .valid,
+  .bomb,
+  .checked {
     width: 48px;
     height: 48px;
     border-width: 5px;
@@ -462,7 +350,7 @@ footer {
   h1 {
     font-size: 2.5rem;
   }
-  
+
   h2 {
     font-size: 1.75rem;
   }
@@ -483,4 +371,3 @@ footer {
     font-size: 50px;
   }
 }
-
