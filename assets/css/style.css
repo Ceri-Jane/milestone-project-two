@@ -23,6 +23,12 @@
 /* Global styles */
 
 /* Custom Bootstrap Navbar Styling */
+
+.navbar-nav .nav-item {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
 .custom-navbar {
   font-family: var(--primary-font);
   background-color: var(--border-color);
@@ -56,7 +62,7 @@
   border: none;
 }
 
-.logo {
+.nav-logo {
   width: 35px;
 }
 
