@@ -1,4 +1,4 @@
-const grid = document.querySelector(".grid");
+const grid = document.querySelector(".game-grid");
 const flagsLeft = document.querySelector("#flags-left");
 const result = document.querySelector("#result");
 const width = 10;

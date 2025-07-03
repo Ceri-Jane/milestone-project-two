@@ -75,7 +75,7 @@ section {
   min-height: 80vh; /* helps with vertical space */
 }
 
-.container {
+.game-container {
   width: 600px;
 }
 
@@ -89,7 +89,7 @@ h2 {
   font-size: x-large;
 }
 
-.grid {
+.game-grid {
   height: 500px;
   width: 500px;
   display: flex;
@@ -132,7 +132,7 @@ div {
   border: 5px solid;
   border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color) var(--left-highlight-color);
   box-sizing: border-box;
-  /*set to 10% of grid height & width so that exactly 10x10 squares can fit in the grid*/
+  /*set to 10% of game-grid height & width so that exactly 10x10 squares can fit in the game-grid*/
   width: 50px;
   height: 50px;
 }
@@ -220,8 +220,8 @@ footer {
 }
 
 @media screen and (max-width: 320px) {
-  /* Containers full width with some padding */
-  .container {
+  /* game-containers full width with some padding */
+  .game-container {
     width: 95vw;
     max-width: 100%;
     padding: 0 10px;
@@ -273,8 +273,8 @@ footer {
     justify-content: flex-start;
   }
 
-  /* Game grid responsive */
-  .grid {
+  /* Game game-grid responsive */
+  .game-grid {
     width: 90vw;
     max-width: 360px;
     height: auto;
@@ -285,7 +285,7 @@ footer {
     box-sizing: border-box;
   }
 
-  /* Each square in grid */
+  /* Each square in game-grid */
   .valid, .bomb, .checked {
     width: calc((90vw - 12px) / 10); /* 10 squares per row */
     height: calc((90vw - 12px) / 10);
@@ -346,7 +346,7 @@ footer {
 }
 
 @media screen and (max-width: 400px), screen and (max-width: 600px)  {
-  .container {
+  .game-container {
     width: 95vw;
     max-width: 100%;
     padding: 0 10px;
@@ -404,8 +404,8 @@ footer {
     margin-bottom: -150px;
   }
 
-  /* Game grid responsive */
-  .grid {
+  /* Game game-grid responsive */
+  .game-grid {
     width: 90vw;
     max-width: 385px;
     height: auto;
@@ -416,7 +416,7 @@ footer {
     box-sizing: border-box;
   }
 
-  /* Each square in grid */
+  /* Each square in game-grid */
   .valid, .bomb, .checked {
     width: calc((90vw - 12px) / 10); /* 10 squares per row */
     height: calc((90vw - 12px) / 10);
@@ -480,19 +480,19 @@ footer {
 
 /* Tablets and up */
 @media (min-width: 768px) {
-  .container {
-    width: 600px; /* fixed width container */
+  .game-container {
+    width: 600px; /* fixed width game-container */
   }
 
-  .grid {
+  .game-grid {
     width: 500px;
     height: 500px;
     margin-left: 50px;
   }
 
   .valid, .bomb, .checked {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-width: 5px;
   }
 
