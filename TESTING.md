@@ -1,7 +1,7 @@
 # Testing
 ----------
 
-Here you will find all tests performed on the Minesweeper Gamesite.
+Here you will find all tests performed on the Minesweeper Game site.
 
 Return to [README.md](README.md)
 
@@ -67,7 +67,7 @@ Return to [README.md](README.md)
 
 The **WebAIM Contrast Checker** was used to manually verify that the chosen colour palette meets **WCAG contrast ratio guidelines** for accessibility. This ensures that all text and interactive elements are readable for users, including those with visual impairments.
 
-Each combination of **text color** and **background color** from the site’s colour palette was tested. All results met the required contrast ratios for **normal text (4.5:1)** and **large text (3:1)**, ensuring compliance with WCAG 2.1 standards.
+Each combination of **text colour** and **background colour** from the site’s colour palette was tested. All results met the required contrast ratios for **normal text (4.5:1)** and **large text (3:1)**, ensuring compliance with WCAG 2.1 standards.
 
 **Screenshots of individual contrast checks are included below** as evidence of accessibility compliance.
 
@@ -261,7 +261,7 @@ These warnings occur because **JSLint defaults to older ECMAScript standards**, 
 The project uses **ES6 syntax intentionally** for cleaner and more efficient code. These warnings were therefore **ignored** as the code functions correctly across modern browsers.
 
 
-I also checked my JavaScript code with ChatGPT. Here is a summary and fixes I implementd off the back of that:
+I also checked my JavaScript code with ChatGPT. Here is a summary and fixes I implemented off the back of that:
 
 ![ChatGPT JavaScript summary](assets/testing/images/chat-gpt-js-summary.png)
 
@@ -290,9 +290,9 @@ The site was designed and developed to be fully responsive, providing an optimal
 - Scaled text, buttons, and interactive elements to ensure usability and readability across all breakpoints.
 - Ensured **footer and navigation elements** remain accessible without overlapping or pushing content off-screen.
 
-A video demonstration of the site across different screen sizes (**320px, 425px, 768px, and desktops**) is included below to showcase responsive behavior.
+A video demonstration of the site across different screen sizes (**320px, 425px, 768px, and desktops**) is included below to showcase responsive behaviour.
 
-![Responsive behavior on different screen sizes](assets/testing/videos/responsive.gif)
+![Responsive behaviour on different screen sizes](assets/testing/videos/responsive.gif)
 
 
 [Back to contents](#contents)
@@ -363,7 +363,7 @@ The game includes a feature that allows users on mobile devices to **place or re
 **Solution:**  
 To address this, I implemented a platform check in JavaScript to detect iOS devices and then adjusted the event handling. Specifically:
 - Added a function to detect if the user is on iOS.
-- Applied a custom **long-press timer using `touchstart` and `touchend` events**, while preventing the default iOS behavior that interfered with the gesture.
+- Applied a custom **long-press timer using `touchstart` and `touchend` events**, while preventing the default iOS behaviour that interfered with the gesture.
 
 
 
