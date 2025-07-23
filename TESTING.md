@@ -11,6 +11,7 @@ Return to [README.md](README.md)
 ----------
 
 * [User stories](#user-stories)
+  * [Excluded Feature](#excluded-feature)
 
 * [Contrast](#contrast)
 
@@ -54,7 +55,20 @@ Return to [README.md](README.md)
 | 4          | Game restart and session reset functionality      | Should-have | Allows users to restart without refreshing the page.                        | Gameplay logic                                     |     ✓     |
 | 5          | Simple, intuitive rules and information layout    | Should-have | Add "How to Play" section; explain game rules.                              | Layout/navigation in place                         |     ✓     |
 | 6          | Transparent use of game rules and fairness        | Must-have   | Help players trust that game logic is fair, consistent, and not rigged.     | “How to Play” content in place                     |     ✓     |
-| 7          | Difficulty level selector                         | Could-have  | Allow users to choose grid size and bomb count.                             | Gameplay logic, reset functionality                 |           |
+| 7          | Difficulty level selector                         | Could-have  | Allow users to choose grid size and bomb count.                             | Gameplay logic, reset functionality                 |     X     |
+
+
+### Excluded Feature
+**Difficulty Level Selector (User Story 7)**
+
+**Reason for Exclusion:**  
+The difficulty level selector was identified as a **"Could-Have"** feature under the MoSCoW prioritization model. While it would enhance replayability and provide players with more control over their experience, it was not essential to the core functionality of the game for this phase of development. Implementing this feature would require additional logic for dynamic grid generation, bomb placement adjustments, and UI controls, which could significantly increase development time and complexity.
+
+**Future Enhancement:**  
+Introducing difficulty levels in a future iteration would be a valuable improvement. It would allow players to tailor the challenge to their skill level and add variety to the gameplay, making the project more engaging and polished. Planned approaches include:
+- Adding UI elements (buttons or dropdown) for difficulty selection.
+- Scaling grid size and bomb count based on chosen difficulty.
+- Ensuring that the reset and restart functions respect the selected difficulty.
 
 
 [Back to contents](#contents)
