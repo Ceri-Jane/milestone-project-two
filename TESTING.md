@@ -21,6 +21,8 @@ Return to [README.md](README.md)
 
 * [Browser Compatibility](#browser-compatibility)
 
+* [Bug Log](#bug-log)
+
 * [HTML Code](#html-code)
 
 * [CSS Code](#css-code)
@@ -64,11 +66,13 @@ Return to [README.md](README.md)
 **Reason for Exclusion:**  
 The difficulty level selector was identified as a **"Could-Have"** feature under the MoSCoW prioritization model. While it would enhance replayability and provide players with more control over their experience, it was not essential to the core functionality of the game for this phase of development. Implementing this feature would require additional logic for dynamic grid generation, bomb placement adjustments, and UI controls, which could significantly increase development time and complexity.
 
-**Future Enhancement:**  
+**Future Enhancement:***  
 Introducing difficulty levels in a future iteration would be a valuable improvement. It would allow players to tailor the challenge to their skill level and add variety to the gameplay, making the project more engaging and polished. Planned approaches include:
 - Adding UI elements (buttons or dropdown) for difficulty selection.
 - Scaling grid size and bomb count based on chosen difficulty.
 - Ensuring that the reset and restart functions respect the selected difficulty.
+
+*_[See Future Improvements in README.md](README.md#future-improvements)_
 
 
 [Back to contents](#contents)
@@ -231,6 +235,28 @@ The site was tested on the following devices and browsers:
 [Back to contents](#contents)
 
 Return to [README.md](README.md)
+
+
+----------
+## Bug Log 
+----------
+
+| Bug ID | Bug Description                                      | Cause                                    | Fix Implemented                              | Status  |
+|:--------:|-------------------------------------------------------|------------------------------------------|----------------------------------------------|:---------:|
+| 1      | Right-click opens browser context menu on desktop    | Default browser event interferes         | Added `event.preventDefault()` in JS        | Fixed   |
+| 2      | Long-press flagging not working on iOS               | Safari handles `contextmenu` differently | Added custom long-press detection with `touchstart` & `touchend` | Fixed   |
+| 3      | Instructions text overflowing on smaller screens     | CSS overflow not set properly            | Added `overflow: auto` and media queries    | Fixed   |
+| 4      | Navbar links didn’t collapse after click on mobile   | Missing collapse trigger in JS           | Added `data-bs-toggle` and collapse script  | Fixed   |
+| 5      | Incorrect flags left counter after reset             | Flag variable not reset in function      | Reset flags count in `resetGame()` function | Fixed   |
+
+**Unfixed Bugs:**  
+None remain. All identified issues were resolved during testing.
+
+
+[Back to contents](#contents)
+
+Return to [README.md](README.md)
+
 
 ----------
 ## HTML Code 
