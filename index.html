@@ -32,6 +32,7 @@
         
         <!-- Navbar -->
         <nav class="navbar navbar-expand-md custom-navbar fixed-top">
+            <!-- All nav links include descriptive ARIA labels for screen reader accessibility -->
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html" aria-label="Minesweeper home page">
                     <img src="assets/favicon/android-chrome-192x192.png" alt="Minesweeper logo" class="nav-logo">
@@ -62,23 +63,28 @@
 
     <!--main element containing game area and how to play section-->
     <main>
-        <!--main heading-->
+        <!-- Game title area with centered heading -->
         <div class="game-container">
             <h1><u>Minesweeper</u></h1>
         </div>   
 
         <!--Game area-->
         <div class="game-container">
+            <!-- Live flag counter updates as player places/removes flags -->
             <div>🚩 Flags left: <span id="flags-left"></span></div>
-            <div class="game-grid"></div>        
+            <!-- Game grid will be populated dynamically by JavaScript -->
+            <div class="game-grid"></div>  
+            <!-- Displays game outcome message: win or game over -->      
             <div id="result"></div>
+            <!-- Button to reset the game state (clears grid and restarts logic) -->
             <button id="reset-button">Reset Game</button>
         </div>
 
         <!--how to play section-->
         <div class="game-container">
             <h2 id="how-to-play">How to play:</h2>
-            <P class="joystick">🕹️</P>
+            <p class="joystick">🕹️</p>
+            <!-- Scrollable container holding step-by-step instructions -->
             <div class="scroll-box">
                 <p><u><b>Goal:</b></u></p>
                 <p>To win the game you must mark the 20 squares, containing hidden bombs '💣', with a red flag '🚩'.</p>
@@ -90,7 +96,7 @@
                         <ul>
                             <li>Left mouse click to select and reveal a square.</li>
                             <li>Right mouse click to place/remove a red flag.</li>
-                            <li>Left mouse click the 'Reset Game' button or refresh your browser to reset the game</li>
+                            <li>Left mouse click the "Reset Game" button or refresh your browser to reset the game</li>
                         </ul>
                     </li>    
                     <li>
@@ -98,7 +104,7 @@
                         <ul>
                             <li>Short tap to select and reveal a square.</li>
                             <li>Long press to place/remove a red flag.</li>
-                            <li>Short tap the 'Reset Game' button or refresh your browser to reset the game</li>
+                            <li>Short tap the "Reset Game" button or refresh your browser to reset the game</li>
                         </ul>
                     </li>     
                 </ol>
@@ -106,7 +112,7 @@
                 <p><u><b>Instructions:</b></u></p>
                 <ol>
                     <li>
-                        <p>Start by clicking a square (hope it doesn't contain a bomb or you will imediately fail) and numbers will appear .</p><br>
+                        <p>Start by clicking a square (hope it doesn't contain a bomb or you will immediately fail) and numbers will appear.</p><br>
                         <ul>
                             <li>Each number tells you how many mines are in the 8 surrounding squares.</li>
                             <li>For example, a “2” means there are 2 mines touching that square.</li>
@@ -139,8 +145,9 @@
         </div>
         
         <div class="game-container">
+            <!-- About section describing project goals, tech used, and user experience -->
             <h2 id="about">About Minesweeper Game:</h2>
-            <P>Interactive Front-End Project</P>
+            <p>Interactive Front-End Project</p>
             <div class="scroll-box">
                 <h3>Overview</h3>
             <p>Welcome to my Minesweeper game — a classic puzzle game brought to life with pure HTML, CSS, and JavaScript. This project demonstrates an interactive front-end application where users engage directly with the data on the page, manipulating the game board and receiving immediate feedback based on their actions.</p>
@@ -185,7 +192,7 @@
 
 <!--footer section containing creator logo and social media links-->
     <footer id="contact" class="mt-auto">
-        <p>created by:</p>
+        <p>Created by:</p>
         <!--creator logo-->
         <img src="assets/images/ceri-jane-logo.png" class="logo-image" alt="Ceri Jane logo">
         <!--social media links-->
@@ -221,7 +228,7 @@
     <!--Font Awesome kit-->
     <script src="https://kit.fontawesome.com/d4e7d12788.js" crossorigin="anonymous"></script>
 
-    <!--Custom JS-->
+    <!--Custom JS containing game logic: Handles grid creation, event listeners, and game mechanics -->
     <script src="assets/javascript/script.js"></script>
 
 
