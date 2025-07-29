@@ -1,3 +1,4 @@
+
 const grid = document.querySelector(".game-grid");
 const flagsLeft = document.querySelector("#flags-left");
 const result = document.querySelector("#result");
@@ -12,22 +13,37 @@ let flags = 0;
 // iOS Safari ignores contextmenu events
 let longPressTimer = null;
 
-/* Detect if the user is on an iOS device because
-iOS Safari ignores contextmenu events */
+/**
+ * Detect if the user is on an iOS device.
+ * iOS Safari ignores contextmenu events.
+ * @returns {boolean}
+ */
 function isIOS() {
     return /iP(hone|od|ad)/.test(navigator.userAgent);
 }
 
-// Create game board
+/**
+ * Initializes and renders the Minesweeper game board.
+ * 
+ * - Randomly distributes bombs and valid tiles across the grid.
+ * - Creates individual square elements and appends them to the game grid container.
+ * - Adds event listeners for user interactions:
+ *    - Left-click for revealing squares.
+ *    - Right-click (or two-finger tap) for placing/removing flags.
+ *    - Long-press support for iOS devices to mimic right-click functionality, 
+ *      due to Safari's lack of support for 'contextmenu' events.
+ * - After placing all squares, calculates and assigns the number of adjacent bombs 
+ *   to each non-bomb square via a 'data' attribute.
+ *
+ * Modifies:
+ * - `squares` array with DOM elements.
+ * - Updates the DOM with flag and bomb counts.
+ */
 function createBoard() {
     flagsLeft.innerHTML = bombAmount;
 
-    // get shuffled game array with random 20 bombs
-    // and fill with a string named bomb
     const bombArray = Array(bombAmount).fill("bomb");
-    // fill all other 80 squares with a string named valid
     const emptyArray = Array(width * width - bombAmount).fill("valid");
-    // shuffle the 20 bombs strings together with the 80 valid strings
     const gameArray = emptyArray.concat(bombArray);
     const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
 
@@ -38,19 +54,15 @@ function createBoard() {
         grid.appendChild(square);
         squares.push(square);
 
-        // Left click
         square.addEventListener("click", function () {
             click(square);
         });
 
-        // Right-click (desktop + supported mobile)
         square.addEventListener("contextmenu", function (e) {
             e.preventDefault();
             addFlag(square);
         });
 
-        // Long-press (iOS only)
-        // Safari ignores contextmenu events)
         if (isIOS()) {
             square.addEventListener("touchstart", function () {
                 longPressTimer = setTimeout(() => {
@@ -68,67 +80,20 @@ function createBoard() {
         }
     }
 
-    // add numbers for the amount of bombs
-    // around the square thats clicked
     for (let i = 0; i < squares.length; i++) {
         let total = 0;
-        // if clicking on a box on the left edge, do not count bombs
-        // in boxes to the left as there are no boxes here
         const isLeftEdge = (i % width === 0);
-        // if clicking on a box on the right edge, do not count bombs
-        // in boxes to the right as there are no boxes here
         const isRightEdge = (i % width === width - 1);
 
         if (squares[i].classList.contains("valid")) {
-            if (
-                i > 0 &&
-                !isLeftEdge &&
-                squares[i - 1].classList.contains("bomb")
-            ) total++;
-            // check square to the top and right
-            // of the one selected & makes sure
-            // not to check any non-existant boxes above the top row
-            if (
-                i > 9 &&
-                !isRightEdge &&
-                squares[i + 1 - width].classList.contains("bomb")
-            ) total++;
-            // check square directly above the one selected
-            if (
-                i > 10 &&
-                squares[i - width].classList.contains("bomb")
-            ) total++;
-            // check square to the top and left of the one selected
-            if (
-                i > 11 &&
-                !isLeftEdge &&
-                squares[i - width - 1].classList.contains("bomb")
-            ) total++;
-            // check square directly to the right of the one selected
-            if (
-                i < 99 &&
-                !isRightEdge &&
-                squares[i + 1].classList.contains("bomb")
-            ) total++;
-            // check square directly below and to
-            // the left of the one selected
-            if (
-                i < 90 &&
-                !isLeftEdge &&
-                squares[i - 1 + width].classList.contains("bomb")
-            ) total++;
-            // check square directly below and to
-            // the right of the one selected
-            if (
-                i < 88 &&
-                !isRightEdge &&
-                squares[i + 1 + width].classList.contains("bomb")
-            ) total++;
-            // check square directly below the one selected
-            if (
-                i < 89 &&
-                squares[i + width].classList.contains("bomb")
-            ) total++;
+            if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains("bomb")) total++;
+            if (i > 9 && !isRightEdge && squares[i + 1 - width].classList.contains("bomb")) total++;
+            if (i > 10 && squares[i - width].classList.contains("bomb")) total++;
+            if (i > 11 && !isLeftEdge && squares[i - width - 1].classList.contains("bomb")) total++;
+            if (i < 99 && !isRightEdge && squares[i + 1].classList.contains("bomb")) total++;
+            if (i < 90 && !isLeftEdge && squares[i - 1 + width].classList.contains("bomb")) total++;
+            if (i < 88 && !isRightEdge && squares[i + 1 + width].classList.contains("bomb")) total++;
+            if (i < 89 && squares[i + width].classList.contains("bomb")) total++;
             squares[i].setAttribute("data", total);
         }
     }
@@ -136,12 +101,14 @@ function createBoard() {
 
 createBoard();
 
-// reset button
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", resetGame);
 resetButton.addEventListener("touchstart", resetGame);
 
-// add red flag with right click
+/**
+ * Toggle a flag on a square to mark it as suspected to contain a bomb.
+ * @param {HTMLElement} square
+ */
 function addFlag(square) {
     if (isGameOver) return;
     if (!square.classList.contains("checked") && (flags < bombAmount)) {
@@ -160,22 +127,22 @@ function addFlag(square) {
     }
 }
 
-// define function for click
+/**
+ * Handle left-click on a square. If it's a bomb, trigger game over.
+ * Otherwise, show number or fan out if zero.
+ * @param {HTMLElement} square
+ */
 function click(square) {
-    // continue the game if a bomb isn't clicked
     if (
         isGameOver ||
         square.classList.contains("checked") ||
         square.classList.contains("flag")
     ) return;
 
-    // end the game if a bomb is clicked
     if (square.classList.contains("bomb")) {
         gameOver();
     } else {
-        // move .add('checked') here so it's always applied
         square.classList.add("checked");
-        // show how many bombs are around the square that was selected
         let total = square.getAttribute("data");
         if (total != 0) {
             if (total == 1) square.classList.add("one");
@@ -185,42 +152,36 @@ function click(square) {
             square.innerHTML = total;
             return;
         }
-        // fans out if there are zero bombs around
-        // the area of the selected square
         checkSquare(square);
     }
 }
 
-/* add function to fan out if zero bombs are around
-the area of selected square */
+/**
+ * Fan out and reveal adjacent squares if no bombs are nearby.
+ * @param {HTMLElement} square
+ */
 function checkSquare(square) {
     const id = parseInt(square.id);
     const isLeftEdge = (id % width === 0);
     const isRightEdge = (id % width === width - 1);
 
-setTimeout(function () {
-        if (id > 0 && !isLeftEdge)
-            click(document.getElementById(id - 1));
-        if (id > 9 && !isRightEdge)
-            click(document.getElementById(id + 1 - width));
-        if (id > 10)
-            click(document.getElementById(id - width));
-        if (id > 11 && !isLeftEdge)
-            click(document.getElementById(id - 1 - width));
-        if (id < 98 && !isRightEdge)
-            click(document.getElementById(id + 1));
-        if (id < 90 && !isLeftEdge)
-            click(document.getElementById(id - 1 + width));
-        if (id < 88 && !isRightEdge)
-            click(document.getElementById(id + 1 + width));
-        if (id < 89)
-            click(document.getElementById(id + width));
-        // fans out after 10 miliseconds
+    setTimeout(function () {
+        if (id > 0 && !isLeftEdge) click(document.getElementById(id - 1));
+        if (id > 9 && !isRightEdge) click(document.getElementById(id + 1 - width));
+        if (id > 10) click(document.getElementById(id - width));
+        if (id > 11 && !isLeftEdge) click(document.getElementById(id - 1 - width));
+        if (id < 98 && !isRightEdge) click(document.getElementById(id + 1));
+        if (id < 90 && !isLeftEdge) click(document.getElementById(id - 1 + width));
+        if (id < 88 && !isRightEdge) click(document.getElementById(id + 1 + width));
+        if (id < 89) click(document.getElementById(id + width));
     }, 10);
 }
 
+/**
+ * Check if all bombs have been correctly flagged.
+ * If so, declare win and end game.
+ */
 function checkForWin() {
-    // Prevent duplicate win messages once game is over and won
     if (isGameOver) return;
 
     let matches = 0;
@@ -238,11 +199,13 @@ function checkForWin() {
     }
 }
 
+/**
+ * End the game and reveal all bombs.
+ */
 function gameOver() {
     result.innerHTML = "BOOOOOM! Game Over!";
     isGameOver = true;
 
-    // reveal all bombs when the game is over
     squares.forEach(function (square) {
         if (square.classList.contains("bomb")) {
             square.innerHTML = "💣";
@@ -252,18 +215,16 @@ function gameOver() {
     });
 }
 
+/**
+ * Reset the game to its initial state.
+ */
 function resetGame() {
-    // Clear the grid and squares array
     grid.innerHTML = "";
     squares = [];
     isGameOver = false;
     flags = 0;
     result.innerHTML = "";
-
-    // reset flagsLeft count on reset
     flagsLeft.innerHTML = bombAmount;
-
-    // Recreate the board
     createBoard();
 }
 
