@@ -9,21 +9,20 @@
 /* CSS Variables */
 :root {
   --primary-font: "Press Start 2P", monospace;
-  --border-color: #000000; /*black*/
-  --shadow-color: #4b4949; /*darker grey*/
-  --left-highlight-color: #ffffff; /*white*/
-  --top-highlight-color: #d6d6d6; /*lighter grey*/
-  --background-color: #a5a5a5; /*light grey*/
-  --one-color: #00422E; /*dark green*/
-  --two-color: #131191; /*dark blue*/
-  --three-color: #6E0C59; /*dark pink*/
-  --four-color: #5C3100; /*brown*/
+  --border-color: #000000; /* black */
+  --shadow-color: #4b4949; /* darker grey */
+  --left-highlight-color: #ffffff; /* white */
+  --top-highlight-color: #d6d6d6; /* lighter grey */
+  --background-color: #a5a5a5; /* light grey */
+  --one-color: #00422E; /* dark green */
+  --two-color: #131191; /* dark blue */
+  --three-color: #6E0C59; /* dark pink */
+  --four-color: #5C3100; /* brown */
 }
 
 /* Global styles */
 
 /* Custom Bootstrap Navbar Styling */
-
 .navbar-nav .nav-item {
   margin-left: 25px;
   margin-right: 25px;
@@ -62,10 +61,12 @@
   border: none;
 }
 
+/* Bomb logo in nav bar */
 .nav-logo {
   width: 35px;
 }
 
+/* Styling for main element(s) */
 main {
   padding-top: 70px;
   display: flex;
@@ -75,6 +76,7 @@ main {
   min-height: 100vh; /* helps with vertical space */
 }
 
+/* Styling for section element(s) */
 section {
   padding-top: 50px;
   display: flex;
@@ -84,78 +86,74 @@ section {
   min-height: 80vh; /* helps with vertical space */
 }
 
-.game-container {
-  width: 600px;
-}
-
-h1 {
-  padding-top: 20px;
-  padding-bottom: 50px;
-  text-transform: uppercase;
-  font-size: xx-large;
-}
-
-h2 {
-  font-size: x-large;
-}
-
-h3 {
-  font-size: large;
-  font-weight: bold;
-}
-
-.game-grid {
-  height: 500px;
-  width: 500px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: var(--background-color);
-  margin-left: 50px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  border: 10px solid var(--border-color);
-  -webkit-user-select: none; /* Disable text selection in Safari */
-  user-select: none;
-  -webkit-touch-callout: none; /* Disable long-press callout (like copy/paste on iOS) */
-}
-
-#reset-button {
-  font-family: var(--primary-font);
-  font-size: 16px;
-  margin-top: 15px;
-  padding: 10px 20px;
-  border: none;
-  background-color: var(--shadow-color);
-  color: var(--left-highlight-color);
-  cursor: pointer;
-  box-shadow: 2px 2px 0 var(--border-color);
-}
-
-#reset-button:hover {
-  background-color: var(--top-highlight-color);
-  color: var(--border-color);
-}
-
+/* Styling for div element(s) */
 div {
-  font-size: 25px;
   text-align: center;
   font-family: var(--primary-font);
 }
 
+/* Styling for heading element(s) */
+h1 {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h3 {
+  font-size: medium;
+  font-weight: bold;
+}
+
+/* Styling for game container */
+.game-container {
+  width: 600px;
+}
+
+/* Styling for game container */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  gap: 0; /* set to a few px if you want spacing */
+  background-color: var(--background-color); /* optional for clarity */
+  /* Border around the full grid */
+  border: 8px solid var(--border-color);
+}
+
+/* Styling for emojis & numbers in game grid */
 .valid,
 .bomb {
-  border: 5px solid;
-  border-color: var(--top-highlight-color) var(--shadow-color) var(--shadow-color)
-    var(--left-highlight-color);
-  /* set to 10% of game-grid height & width so that exactly 10x10 squares fit */
-  width: 50px;
-  height: 50px;
+  background-color: var(--background-color); /* default grey */
+  border: 2px solid var(--border-color);
+  box-shadow:
+    inset -2px -2px 0 0 var(--shadow-color),
+    inset 2px 2px 0 0 var(--left-highlight-color),
+    inset -1px 1px 0 0 var(--top-highlight-color);
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
 }
 
 .checked {
-  width: 50px;
-  height: 50px;
-  border: 2px solid var(--shadow-color);
+  background-color: var(--top-highlight-color); /* light grey */
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    inset 1px 1px 2px var(--shadow-color),
+    inset -1px -1px 2px var(--shadow-color);
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  color: #000; /* or use one of your --one-color etc depending on number */
 }
 
 .one {
@@ -174,30 +172,55 @@ div {
   color: var(--four-color);
 }
 
+/* Reset button styling */
+#reset-button {
+  font-family: var(--primary-font);
+  font-size: 16px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--shadow-color);
+  color: var(--left-highlight-color);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border-color);
+}
+
+/* Reset button hover */
+#reset-button:hover {
+  background-color: var(--top-highlight-color);
+  color: var(--border-color);
+}
+
+/* How-to-play & About section padding to push below nav bar once link is clicked on all screen sizes */
 #how-to-play,
 #about {
   padding-top: 70px;
 }
 
+/* Joystick emoji */
 .joystick {
   font-size: xxx-large;
   margin-top: -20px;
 }
 
+/* Scroll box(es) styling */
 .scroll-box {
   background-color: var(--top-highlight-color);
   text-align: left;
-  font-size: 15px;
-  width: 700px;
-  height: 400px;
-  overflow-y: scroll;
+  font-size: clamp(13px, 2vw, 15px);
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  max-height: 400px;
+  overflow-y: auto;
   scrollbar-color: var(--left-highlight-color) var(--border-color);
   border: 5px solid var(--border-color);
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-bottom: 100px;
+  padding: 20px 30px;
+  margin: 0 auto 60px auto;
+  box-sizing: border-box;
 }
 
+/* Footer */
 footer {
   font-family: var(--primary-font);
   font-size: 17px;
@@ -207,173 +230,70 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
+  max-width: 100vw;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 20px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
+/* creator logo */
 .logo-image {
-  max-width: 500px;
-  max-height: 500px;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 10px auto;
 }
 
+/* Social media icons/links */
 #social-networks {
-  text-align: center;
-  padding-top: 12px;
-  padding-bottom: 12px;
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
   list-style-type: none;
 }
 
 #social-networks i {
-  font-size: 30px;
+  font-size: clamp(20px, 6vw, 40px);
   color: var(--left-highlight-color);
 }
 
-/* Small and extra small screens (up to 600px) */
-@media screen and (max-width: 600px) {
-  .game-container {
-    width: 95vw;
-    max-width: 100%;
-    padding: 0 10px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-    padding-bottom: 20px;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 1rem;
-    text-align: center;
-    margin-top: -30px;
-  }
-
-  p,
-  ol,
-  ul,
-  li {
-    font-size: 10px;
-  }
-
-  .joystick {
-    font-size: 30px;
-    margin-top: -10px;
-  }
-
-  main,
-  section {
-    padding-top: 60px; /* account for fixed nav */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  section {
-    margin-bottom: -150px;
-  }
-
-  .game-grid {
-    width: 90vw;
-    max-width: 385px;
-    height: auto;
-    margin: 20px auto;
-    border-width: 6px;
-  }
-
-  .valid,
-  .bomb,
-  .checked {
-    width: calc((90vw - 12px) / 10);
-    height: calc((90vw - 12px) / 10);
-    border-width: 2px;
-  }
-
-  #reset-button {
-    font-size: 12px;
-    padding: 8px 16px;
-    margin-top: 10px;
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
-  }
-
+@media screen and (max-width: 400px) {
   .scroll-box {
-    width: 90vw;
-    max-width: 360px;
-    height: 300px;
     padding: 15px 20px;
-    margin-bottom: 50px;
-    font-size: 14px;
-    overflow-y: auto;
-  }
-
-  div {
-    font-size: 15px;
-  }
-
-  .logo-image {
-    max-width: 290px;
-    max-height: 290px;
-    margin: 10px auto;
-    display: block;
-  }
-
-  #social-networks {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    padding: 10px 0;
-  }
-
-  #social-networks i {
-    font-size: 30px;
   }
 }
 
-/* Tablets and up */
-@media (min-width: 768px) {
+@media screen and (max-width: 576px) {
+  .navbar-nav .nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .game-container {
-    width: 600px; /* fixed width game-container */
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
 
   .game-grid {
-    width: 500px;
-    height: 500px;
-    margin-left: 50px;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
   }
 
   .valid,
   .bomb,
   .checked {
-    width: 48px;
-    height: 48px;
-    border-width: 5px;
+    font-size: 0.7rem; /* optional for clarity on smaller cells */
   }
 
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 1.75rem;
-  }
-
-  .scroll-box {
-    width: 600px;
-    height: 400px;
-    font-size: 15px;
-    padding: 20px 30px;
-  }
-
-  #reset-button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-
-  #social-networks i {
-    font-size: 50px;
+    #reset-button {
+    font-size: 0.75rem;
+    padding: 8px 16px;
   }
 }
