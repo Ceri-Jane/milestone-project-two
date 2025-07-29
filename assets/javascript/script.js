@@ -14,6 +14,16 @@ let flags = 0;
 let longPressTimer = null;
 
 /**
+ * Reset button event listener setup.
+ * Wrapped in DOMContentLoaded to ensure the element and resetGame() exist.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  const resetButton = document.getElementById("reset-button");
+  resetButton.addEventListener("click", resetGame);
+  resetButton.addEventListener("touchstart", resetGame);
+});
+
+/**
  * Detect if the user is on an iOS device.
  * iOS Safari ignores contextmenu events.
  * @returns {boolean}
@@ -98,12 +108,6 @@ function createBoard() {
         }
     }
 }
-
-createBoard();
-
-const resetButton = document.getElementById("reset-button");
-resetButton.addEventListener("click", resetGame);
-resetButton.addEventListener("touchstart", resetGame);
 
 /**
  * Toggle a flag on a square to mark it as suspected to contain a bomb.
@@ -242,3 +246,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+createBoard();
