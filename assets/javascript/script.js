@@ -1,4 +1,3 @@
-
 const grid = document.querySelector(".game-grid");
 const flagsLeft = document.querySelector("#flags-left");
 const result = document.querySelector("#result");
@@ -46,6 +45,11 @@ function isIOS() {
  * Modifies:
  * - `squares` array with DOM elements.
  * - Updates the DOM with flag and bomb counts.
+ *
+ * Core board creation logic partly adapted from Ania Kubów’s tutorial:
+ * https://www.youtube.com/watch?v=jS7iB9mRvcc
+ *
+ * iOS support, modern event handling, and Bootstrap compatibility added.
  */
 function createBoard() {
     flagsLeft.innerHTML = bombAmount;
@@ -55,7 +59,7 @@ function createBoard() {
     const emptyArray = Array(width * width - bombAmount).fill("valid");
     const gameArray = emptyArray.concat(bombArray);
     const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
-    
+
     /* jshint -W083 */
     for (let i = 0; i < width * width; i++) {
         const square = document.createElement("div");
@@ -63,30 +67,30 @@ function createBoard() {
         square.classList.add(shuffledArray[i]);
         grid.appendChild(square);
         squares.push(square);
-        
+
         (function (s) {
             s.addEventListener("click", function () {
                 click(s);
             });
-            
+
             s.addEventListener("contextmenu", function (e) {
                 e.preventDefault();
                 addFlag(s);
             });
-            
+
             if (isIosDevice) {
                 let longPressTimer;
-                
+
                 s.addEventListener("touchstart", function () {
                     longPressTimer = setTimeout(function () {
                         addFlag(s);
                     }, 500);
                 });
-                
+
                 s.addEventListener("touchend", function () {
                     clearTimeout(longPressTimer);
                 });
-                
+
                 s.addEventListener("touchmove", function () {
                     clearTimeout(longPressTimer);
                 });
@@ -116,6 +120,8 @@ function createBoard() {
 /**
  * Toggle a flag on a square to mark it as suspected to contain a bomb.
  * @param {HTMLElement} square
+ * 
+ * Logic adapted and extended from the tutorial to include flag counting and win check.
  */
 function addFlag(square) {
     if (isGameOver) return;
@@ -139,6 +145,8 @@ function addFlag(square) {
  * Handle left-click on a square. If it's a bomb, trigger game over.
  * Otherwise, show number or fan out if zero.
  * @param {HTMLElement} square
+ * 
+ * Based structurally on the tutorial but extended with CSS class logic.
  */
 function click(square) {
     if (
@@ -167,6 +175,8 @@ function click(square) {
 /**
  * Fan out and reveal adjacent squares if no bombs are nearby.
  * @param {HTMLElement} square
+ * 
+ * Recursive reveal logic inspired by the tutorial.
  */
 function checkSquare(square) {
     const id = parseInt(square.id);
@@ -188,6 +198,8 @@ function checkSquare(square) {
 /**
  * Check if all bombs have been correctly flagged.
  * If so, declare win and end game.
+ * 
+ * Win condition logic loosely adapted from tutorial structure.
  */
 function checkForWin() {
     if (isGameOver) return;
@@ -209,6 +221,8 @@ function checkForWin() {
 
 /**
  * End the game and reveal all bombs.
+ * 
+ * Bomb reveal and end state logic follows the tutorial pattern.
  */
 function gameOver() {
     result.innerHTML = "BOOOOOM! Game Over!";
