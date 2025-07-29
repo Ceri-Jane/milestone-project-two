@@ -57,7 +57,7 @@ Return to [README.md](README.md)
 | 4          | Game restart and session reset functionality      | Should-have | Allows users to restart without refreshing the page.                        | Gameplay logic                                     |     ✓     |
 | 5          | Simple, intuitive rules and information layout    | Should-have | Add "How to Play" section; explain game rules.                              | Layout/navigation in place                         |     ✓     |
 | 6          | Transparent use of game rules and fairness        | Must-have   | Help players trust that game logic is fair, consistent, and not rigged.     | “How to Play” content in place                     |     ✓     |
-| 7          | Difficulty level selector                         | Could-have  | Allow users to choose grid size and bomb count.                             | Gameplay logic, reset functionality                 |     X     |
+
 
 
 ### Excluded Feature
@@ -250,7 +250,7 @@ Return to [README.md](README.md)
 | 5      | Incorrect flags left counter after reset             | Flag variable not reset in function      | Reset flags count in `resetGame()` function | Fixed   |
 
 **Unfixed Bugs:**  
-None remain. All identified issues were resolved during testing.
+None that I am aware of.
 
 
 [Back to contents](#contents)
@@ -301,13 +301,79 @@ These warnings occur because **JSLint defaults to older ECMAScript standards**, 
 The project uses **ES6 syntax intentionally** for cleaner and more efficient code. These warnings were therefore **ignored** as the code functions correctly across modern browsers.
 
 
-I also checked my JavaScript code with ChatGPT. Here is a summary and fixes I implemented off the back of that:
+When I first ran my JavaScript file through **JSHint**, I received **five warnings** related to **functions being declared inside loops**. These warnings can lead to unexpected behavior if variables are not properly scoped.
 
-![ChatGPT JavaScript summary](assets/testing/images/chat-gpt-js-summary.png)
+**Initial Warnings**
 
-![ChatGPT JavaScript enhancement](assets/testing/images/chat-gpt-js-enhancements.png)
+1. `click` handler function declared inside a loop  
+2. `addFlag` used in right-click event inside a loop  
+3. `addFlag` and `longPressTimer` used in long-press handler inside a loop  
+4. `longPressTimer` used in `touchend` inside a loop  
+5. `longPressTimer` used in `touchmove` inside a loop  
 
-![ChatGPT JavaScript errors](assets/testing/images/chat-gpt-js-errors.png)
+**Fixes Applied**
+
+1. **Wrapped all event listeners inside a closure (IIFE)** for each square to safely capture the current state of `square`.
+
+    ```javascript
+    (function (s) {
+      s.addEventListener("click", function () {
+        click(s);
+      });
+
+      s.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        addFlag(s);
+      });
+
+      if (isIosDevice) {
+        let longPressTimer;
+
+        s.addEventListener("touchstart", function () {
+          longPressTimer = setTimeout(function () {
+            addFlag(s);
+          }, 500);
+        });
+
+        s.addEventListener("touchend", function () {
+          clearTimeout(longPressTimer);
+        });
+
+        s.addEventListener("touchmove", function () {
+          clearTimeout(longPressTimer);
+        });
+      }
+    })(square);
+    ```
+
+2. **Scoped `longPressTimer` locally** within the closure, instead of globally, to avoid shared-state issues.
+
+3. **Moved `isIOS()` outside the loop**, storing the result once in a local variable before the loop began:
+
+    ```javascript
+    const isIosDevice = isIOS();
+    ```
+
+4. **Removed any commented-out event listener alternatives** to keep the codebase clean and readable.
+
+5. **Silenced the final JSHint warning** (`W083`) using this directive above the `for` loop:
+
+    ```javascript
+    /* jshint -W083 */
+    ```
+
+    This acknowledges that function declarations inside loops are safe here due to proper closure scoping.
+
+**Final Result**
+
+After applying these fixes:
+
+- ✅ **All JSHint warnings were resolved or safely acknowledged**
+- ✅ Code is fully scoped using closures to avoid semantic confusion
+- ✅ The game works consistently across devices, including iOS
+- ✅ Final JavaScript is clean, efficient, and readable
+
+
 
 [Back to contents](#contents)
 

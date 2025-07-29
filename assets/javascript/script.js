@@ -10,8 +10,6 @@ let bombAmount = 20;
 let squares = [];
 let isGameOver = false;
 let flags = 0;
-// iOS Safari ignores contextmenu events
-let longPressTimer = null;
 
 /**
  * Reset button event listener setup.
@@ -52,42 +50,48 @@ function isIOS() {
 function createBoard() {
     flagsLeft.innerHTML = bombAmount;
 
+    const isIosDevice = isIOS();
     const bombArray = Array(bombAmount).fill("bomb");
     const emptyArray = Array(width * width - bombAmount).fill("valid");
     const gameArray = emptyArray.concat(bombArray);
     const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
-
+    
+    /* jshint -W083 */
     for (let i = 0; i < width * width; i++) {
         const square = document.createElement("div");
         square.id = i;
         square.classList.add(shuffledArray[i]);
         grid.appendChild(square);
         squares.push(square);
-
-        square.addEventListener("click", function () {
-            click(square);
-        });
-
-        square.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-            addFlag(square);
-        });
-
-        if (isIOS()) {
-            square.addEventListener("touchstart", function () {
-                longPressTimer = setTimeout(() => {
-                    addFlag(square);
-                }, 500);
+        
+        (function (s) {
+            s.addEventListener("click", function () {
+                click(s);
             });
-
-            square.addEventListener("touchend", function () {
-                clearTimeout(longPressTimer);
+            
+            s.addEventListener("contextmenu", function (e) {
+                e.preventDefault();
+                addFlag(s);
             });
-
-            square.addEventListener("touchmove", function () {
-                clearTimeout(longPressTimer);
-            });
-        }
+            
+            if (isIosDevice) {
+                let longPressTimer;
+                
+                s.addEventListener("touchstart", function () {
+                    longPressTimer = setTimeout(function () {
+                        addFlag(s);
+                    }, 500);
+                });
+                
+                s.addEventListener("touchend", function () {
+                    clearTimeout(longPressTimer);
+                });
+                
+                s.addEventListener("touchmove", function () {
+                    clearTimeout(longPressTimer);
+                });
+            }
+        })(square);
     }
 
     for (let i = 0; i < squares.length; i++) {
