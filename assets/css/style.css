@@ -86,7 +86,7 @@ section {
   min-height: 80vh; /* helps with vertical space */
 }
 
-/* Styling for div element(s) */
+/* Styling for div element(s) for font and alignment */
 div {
   text-align: center;
   font-family: var(--primary-font);
@@ -100,6 +100,7 @@ h1 {
   text-align: center;
 }
 
+/* Styling for h3 subheadings - medium font size & bold weight to improve visual hierarchy */
 h3 {
   font-size: medium;
   font-weight: bold;
@@ -118,8 +119,8 @@ h3 {
   width: 500px;
   height: 500px;
   margin: 0 auto;
-  gap: 0; /* set to a few px if you want spacing */
-  background-color: var(--background-color); /* optional for clarity */
+  gap: 0;
+  background-color: var(--background-color); /* For clarity */
   /* Border around the full grid */
   border: 8px solid var(--border-color);
 }
@@ -153,9 +154,10 @@ h3 {
   justify-content: center;
   align-items: center;
   user-select: none;
-  color: #000; /* or use one of your --one-color etc depending on number */
+  color: var(--border-color);
 }
 
+/* Each class applies a different color based on bomb count, which helps users quickly distinguish danger level */
 .one {
   color: var(--one-color);
 }
@@ -255,17 +257,22 @@ footer {
   list-style-type: none;
 }
 
+/* Responsive sizing with clamp() & uses main highlight color from palette */
 #social-networks i {
   font-size: clamp(20px, 6vw, 40px);
   color: var(--left-highlight-color);
 }
 
+/* Media Queries */
+
+/* Reduce padding in scroll boxes to fit narrow screens */
 @media screen and (max-width: 400px) {
   .scroll-box {
     padding: 15px 20px;
   }
 }
 
+/* Reduce horizontal spacing between nav links to prevent wrapping or overflow */
 @media screen and (max-width: 576px) {
   .navbar-nav .nav-item {
     margin-left: 10px;
@@ -273,6 +280,7 @@ footer {
   }
 }
 
+/* Resize game grid and container to better fit smaller viewports */
 @media screen and (max-width: 767px) {
   .game-container {
     width: 100%;
@@ -286,12 +294,14 @@ footer {
     margin: 0 auto;
   }
 
+  /* Reduce font sizes and padding for better mobile readability and touch usability */
   .valid,
   .bomb,
   .checked {
-    font-size: 0.7rem; /* optional for clarity on smaller cells */
+    font-size: 0.7rem; /* Prevent emoji/numbers from overflowing small grid cells */
   }
 
+  /* Resize reset button for better fit and usability on smaller screens */
     #reset-button {
     font-size: 0.75rem;
     padding: 8px 16px;
